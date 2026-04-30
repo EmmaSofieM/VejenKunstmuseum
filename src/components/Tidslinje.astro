@@ -5,49 +5,71 @@
 
       <li class="active">
         <a href="#section1">
-          <span class="nav__counter">01</span>
-          <h3 class="nav__title">Intro</h3>
-          <p class="nav__body">Velkommen til Vejen Kunstmuseum.</p>
+          <span class="nav__counter">1905</span>
+          <p class="nav__body">Kunstforeningen for Vejen og Omegn stiftes med <br> ønsket om at styrke interessen for kunst i lokalområdet. <br> Niels Hansen Jacobsen bliver en central figur fra begyndelsen.</p>
         </a>
       </li>
 
       <li>
         <a href="#section2">
-          <span class="nav__counter">02</span>
-          <h3 class="nav__title">Udstillinger</h3>
-          <p class="nav__body">Se aktuelle udstillinger.</p>
+          <span class="nav__counter">1924</span>
+          <p class="nav__body">Vejen Kunstmuseum indvies som et af de få <br>museer i Danmark opført til en kunstner, <br>mens han stadig er i live. <br>Museet fungerer både som udstillingssted og tæt knyttet til kunstnerens liv og arbejde.</p>
         </a>
       </li>
 
       <li>
         <a href="#section3">
-          <span class="nav__counter">03</span>
-          <h3 class="nav__title">Samlingen</h3>
-          <p class="nav__body">Udforsk værkerne.</p>
+          <span class="nav__counter">1938</span>
+          <p class="nav__body">Niels Hansen Jacobsens atelier i Skibelund flyttes til museet. <br> Det styrker forbindelsen mellem værk, arbejdsproces og udstilling.</p>
         </a>
       </li>
 
       <li>
         <a href="#section4">
-          <span class="nav__counter">04</span>
-          <h3 class="nav__title">Besøg</h3>
-          <p class="nav__body">Planlæg dit besøg.</p>
+          <span class="nav__counter">1941</span>
+          <p class="nav__body">Niels Hansen Jacobsen dør, <br> men hans værker og betydning danner fortsat grundlag <br> for museets udvikling og identitet.</p>
         </a>
       </li>
-
+<!-- 
       <li>
         <a href="#section5">
-          <span class="nav__counter">05</span>
-          <h3 class="nav__title">Arrangementer</h3>
-          <p class="nav__body">Se hvad der sker.</p>
+          <span class="nav__counter">1960 - 1975</span>
+          <p class="nav__body">Planer om udvidelse og udvikling præger museet. <br>Nye udstillingsrum og forbedringer skaber bedre rammer <br>for formidling og samling.</p>
         </a>
-      </li>
+      </li> -->
 
       <li>
         <a href="#section6">
-          <span class="nav__counter">06</span>
-          <h3 class="nav__title">Kontakt</h3>
-          <p class="nav__body">Kontakt museet.</p>
+          <span class="nav__counter">1994</span>
+          <p class="nav__body">Teresa Nielsen ansættes som museumsdirektør. <br>Under hendes ledelse vokser museet både i størrelse, <br> samling og antal besøgende.</p>
+        </a>
+      </li>
+
+         <li>
+        <a href="#section7">
+          <span class="nav__counter">2000</span>
+          <p class="nav__body">Museet går online med sin første hjemmeside. <br> Den digitale tilstedeværelse bliver en ny indgang til museet.</p>
+        </a>
+      </li>
+
+         <li>
+        <a href="#section8">
+          <span class="nav__counter">2022</span>
+          <p class="nav__body">En større udvidelse og renovering står færdig. <br> Museet får nye udstillingsarealer og forbedret tilgængelighed.</p>
+        </a>
+      </li>
+
+         <li>
+        <a href="#section9">
+          <span class="nav__counter">2024</span>
+          <p class="nav__body">Museet fejrer sit 100-års jubilæum. Samtidig markeres 30 år med Teresa Nielsen som direktør.</p>
+        </a>
+      </li>
+
+            <li>
+        <a href="#section10">
+          <span class="nav__counter">2026</span>
+          <p class="nav__body">En ny digital tilstedeværelse lanceres <br> med fokus på en mere visuel og tilgængelig formidling. <br>Den digitale oplevelse fungerer som en direkte indgang til museets fysiske univers.</p>
         </a>
       </li>
 
@@ -58,19 +80,23 @@
   <section class="section section2" id="section2"></section>
   <section class="section section3" id="section3"></section>
   <section class="section section4" id="section4"></section>
-  <section class="section section5" id="section5"></section>
+  <!-- <section class="section section5" id="section5"></section> -->
   <section class="section section6" id="section6"></section>
+   <section class="section section7" id="section7"></section>
+  <section class="section section8" id="section8"></section>
+  <section class="section section9" id="section9"></section>
+  <section class="section section10" id="section10"></section>
+ 
 
 </div>
 
 <style>
-    .wrapper {
+.wrapper {
   min-height: 100vh;
   font-family: var(--font-body);
   color: var(--color-text);
 }
 
-/* SECTIONS */
 .section {
   height: 100vh;
   display: flex;
@@ -78,25 +104,31 @@
   align-items: center;
 }
 
-/* dine farver */
 .section1 { background: #69CB7E; }
 .section2 { background: #DFFF8C; }
 .section3 { background: #FFE144; }
 .section4 { background: #FF6443; }
-.section5 { background: #E770F1; }
+/* .section5 { background: #E770F1; } */
+.section6 { background: #69CB7E; }
+.section7 { background: #DFFF8C; }
+.section8 { background: #FFE144; }
+.section9 { background: #FF6443; }
+.section10 { background: #E770F1; }
 
-/* NAV */
 .nav__wrapper {
-  position: fixed;
-  height: 100%;
+   position: sticky;
+  top: 0px; /* eller samme som din header height */
+  align-self: flex-start;
   padding: 30px;
+  z-index: 20;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .nav {
-  margin: 0 0 100px 30px;
+  margin: 80px 0 40px 30px;
   list-style: none;
   padding: 0;
 }
@@ -106,23 +138,17 @@
   transition: 0.2s;
 }
 
-.nav__title {
-  font-family: var(--font-h2);
-  font-size: 30px;
-  margin: 0 0 6px;
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
 .nav__body {
   font-family: var(--font-body);
   font-size: 16px;
+  line-height: 1.25;
+  width: 520px;
+  max-width: 520px;
   height: 0;
+  margin: 0;
   opacity: 0;
   overflow: hidden;
-  transition: 0.3s;
+  transition: opacity 0.3s ease;
 }
 
 .nav li {
@@ -134,7 +160,7 @@
   content: "";
   border-left: 2px solid var(--color-text);
   border-top: 2px solid var(--color-text);
-  height: 250px;
+  height: 120px;
   width: 20px;
   position: absolute;
   left: -30px;
@@ -142,22 +168,27 @@
   opacity: 0.3;
 }
 
+.nav li:last-child::after {
+  display: none;
+}
+
 .nav a {
   color: inherit;
   text-decoration: none;
+  display: block;
+  transition: padding-left 0.15s ease-out;
 }
 
 .nav a:hover {
   padding-left: 10px;
 }
 
-/* ACTIVE */
 .nav li.active {
   padding-left: 10px;
 }
 
 .nav li.active::after {
-  height: 400px;
+  height: 170px;
   width: 35px;
   top: 35px;
   opacity: 1;
@@ -167,14 +198,71 @@
   font-size: 48px;
 }
 
-.nav li.active .nav__title {
-  height: 40px;
+.nav li.active .nav__body {
+  height: auto;
+  max-height: 180px;
   opacity: 1;
+  overflow: visible;
 }
 
-.nav li.active .nav__body {
-  height: 80px;
-  opacity: 1;
+.wrapper {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  position: relative;
+}
+
+.nav__wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: fit-content;
+  float: left;
+  align-self: flex-start;
+  padding: 30px;
+  z-index: 20;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.section {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clear: none;
+}
+
+@media (max-width: 900px) {
+  .nav__wrapper {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    max-height: 45svh;
+    padding: 16px;
+    background: rgba(255,255,255,0.75);
+  }
+
+  .nav {
+    margin: 0 0 0 28px;
+  }
+
+  .nav__counter {
+    font-size: 20px;
+  }
+
+  .nav li.active .nav__counter {
+    font-size: 30px;
+  }
+
+  .nav__body {
+    width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
+    font-size: 13px;
+  }
 }
 </style>
 

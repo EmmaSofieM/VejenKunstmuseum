@@ -1,8 +1,28 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Tidslinje from '../../components/Tidslinje.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
 ---
 
+
 <Layout>
+    <h1>Historien</h1>
+<Breadcrumbs
+  items={[
+    { label: "Om museet", href: "/ommuseet" },
+    { label: "Historie", href: "/ommuseet/historie", active: true },
+    { label: "Samling", href: "/ommuseet/samling" },
+    { label: "Vision", href: "/ommuseet/vision" }
+  ]}
+/>
   <Tidslinje />
 </Layout>
+
+<style>
+    h1 {
+        font-family: var(--font-heading);
+        margin-top: 150px;
+        margin-left: 40px;
+    }
+</style>

@@ -1,0 +1,46 @@
+---
+const { items = [] } = Astro.props;
+---
+
+<nav class="breadcrumbs">
+  {items.map((item) => (
+    <a
+      href={item.href}
+      class={`crumb ${item.active ? "is-active" : ""}`}
+    >
+      {item.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+.breadcrumbs {
+  display: flex;
+  gap: 6px;
+  margin-left: 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.crumb {
+  color: #1A1A1A;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  transition: opacity 0.15s ease;
+}
+
+.crumb:hover {
+  opacity: 0.6;
+}
+
+.crumb.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+</style>
