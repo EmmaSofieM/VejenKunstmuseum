@@ -1,0 +1,209 @@
+<div class="wrapper">
+
+  <nav class="nav__wrapper">
+    <ul class="nav">
+
+      <li class="active">
+        <a href="#section1">
+          <span class="nav__counter">01</span>
+          <h3 class="nav__title">Intro</h3>
+          <p class="nav__body">Velkommen til Vejen Kunstmuseum.</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#section2">
+          <span class="nav__counter">02</span>
+          <h3 class="nav__title">Udstillinger</h3>
+          <p class="nav__body">Se aktuelle udstillinger.</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#section3">
+          <span class="nav__counter">03</span>
+          <h3 class="nav__title">Samlingen</h3>
+          <p class="nav__body">Udforsk værkerne.</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#section4">
+          <span class="nav__counter">04</span>
+          <h3 class="nav__title">Besøg</h3>
+          <p class="nav__body">Planlæg dit besøg.</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#section5">
+          <span class="nav__counter">05</span>
+          <h3 class="nav__title">Arrangementer</h3>
+          <p class="nav__body">Se hvad der sker.</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#section6">
+          <span class="nav__counter">06</span>
+          <h3 class="nav__title">Kontakt</h3>
+          <p class="nav__body">Kontakt museet.</p>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <section class="section section1" id="section1"></section>
+  <section class="section section2" id="section2"></section>
+  <section class="section section3" id="section3"></section>
+  <section class="section section4" id="section4"></section>
+  <section class="section section5" id="section5"></section>
+  <section class="section section6" id="section6"></section>
+
+</div>
+
+<style>
+    .wrapper {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+/* SECTIONS */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* dine farver */
+.section1 { background: #69CB7E; }
+.section2 { background: #DFFF8C; }
+.section3 { background: #FFE144; }
+.section4 { background: #FF6443; }
+.section5 { background: #E770F1; }
+
+/* NAV */
+.nav__wrapper {
+  position: fixed;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.nav {
+  margin: 0 0 100px 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.nav__counter {
+  font-size: 30px;
+  transition: 0.2s;
+}
+
+.nav__title {
+  font-family: var(--font-h2);
+  font-size: 30px;
+  margin: 0 0 6px;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.nav__body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.nav li {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.nav li::after {
+  content: "";
+  border-left: 2px solid var(--color-text);
+  border-top: 2px solid var(--color-text);
+  height: 250px;
+  width: 20px;
+  position: absolute;
+  left: -30px;
+  top: 15px;
+  opacity: 0.3;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  padding-left: 10px;
+}
+
+/* ACTIVE */
+.nav li.active {
+  padding-left: 10px;
+}
+
+.nav li.active::after {
+  height: 400px;
+  width: 35px;
+  top: 35px;
+  opacity: 1;
+}
+
+.nav li.active .nav__counter {
+  font-size: 48px;
+}
+
+.nav li.active .nav__title {
+  height: 40px;
+  opacity: 1;
+}
+
+.nav li.active .nav__body {
+  height: 80px;
+  opacity: 1;
+}
+</style>
+
+<script>
+const sections = document.querySelectorAll(".section");
+const navItems = document.querySelectorAll(".nav li");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    navItems.forEach(item => {
+      const link = item.querySelector("a");
+      item.classList.toggle(
+        "active",
+        link.getAttribute("href") === "#" + entry.target.id
+      );
+    });
+  });
+}, { threshold: 0.6 });
+
+sections.forEach(section => observer.observe(section));
+
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
