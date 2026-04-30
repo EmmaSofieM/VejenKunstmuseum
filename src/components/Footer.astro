@@ -33,13 +33,15 @@
       <div>For presse <a href="mailto:karwi@vejen.dk">karwi@vejen.dk</a></div>
       <div><a href="tel:+4579966942">+45 79 96 69 42</a></div>
       <div class="footer-small">(hverdage 10-16)</div>
+      <div class="insta"><a href="https://www.instagram.com/vejenkunstmuseum/" target="_blank"><img src="public/ikoner/insta.svg" alt="insta"></a></div>
+
     </div>
   </div>
   <div class="footer-right">
     <div class="footer-newsletter">
       <div class="footer-title">ABONNER PÅ VORES NYHEDSBREV</div>
       <form class="newsletter">
-        <label for="newsletter-email">Email</label>
+        <label for="newsletter-email"></label>
         <div class="newsletter-input">
           <input type="email" id="newsletter-email" name="email" placeholder="Email" required />
           <button type="submit" aria-label="Tilmeld">&rsaquo;</button>
@@ -50,7 +52,10 @@
         </div>
       </form>
     </div>
-    <div class="footer-brand">vejen kunst<br />museum</div>
+        <div class="footer-trold"> <img src="public/logo/trold.svg" alt="trold"> </div>
+
+    <div class="footer-brand"> <img src="public/logo/logorød.svg" alt="logo"> </div>
+    </div>
   </div>
 </footer>
 
@@ -62,7 +67,7 @@
 }
 .footer-left {
   background: #E0E1E3;
-  padding: 32px 0 0 40px;
+  padding: 32px 0 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -97,7 +102,7 @@
 .footer-right {
   background: #FF6443;
   color: #1A1A1A;
-  padding: 48px 40px 0 40px;
+  padding: 16px 16px 40px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -115,7 +120,7 @@
 }
 .newsletter-input {
   display: flex;
-  border-bottom: 2px solid #1A1A1A;
+  border-bottom: 1px solid #1A1A1A;
   margin-top: 6px;
 }
 .newsletter-input input {
@@ -139,7 +144,8 @@
   align-items: center;
   gap: 6px;
   margin-top: 8px;
-  font-size: 11px;
+  font-size: 12px;
+
 }
 .newsletter-check a {
   color: #1A1A1A;
@@ -147,15 +153,30 @@
 }
 .footer-brand {
   position: absolute;
-  bottom: 24px;
-  right: 40px;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 0.9;
-  color: #FF6443;
-  opacity: 0.7;
+  bottom: -10px;
+  right: 20px;
   z-index: 1;
 }
+.footer-brand img {
+  width: 450px;  
+  height: auto;
+}
+
+.footer-trold {
+  position: absolute;
+  bottom: 110px;
+  right: 20px;
+  z-index: 1;
+}
+.footer-trold img {
+  width: 150px;  
+  height: auto;
+}
+.insta {
+  bottom: 16px;
+  left: 16px;
+padding-top: 20px;}
+
 @media (max-width: 1200px) {
   .footer-brand {
     font-size: 40px;

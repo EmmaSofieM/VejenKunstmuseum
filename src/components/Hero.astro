@@ -1,0 +1,274 @@
+<section class="hero" style="--hero-color: #FFE144;">
+  <div class="hero__slides">
+    <div class="hero__slide is-active" data-color="#FFE144" data-logo="public/logo/logogul.svg" style="background-image: url('public/hero/1.webp');"></div>
+    <div class="hero__slide" data-color="#DFFF8C" data-logo="public/logo/logosnot.svg" style="background-image: url('public/hero/2.webp');"></div>
+    <div class="hero__slide" data-color="#69CB7E" data-logo="public/logo/logolysgrøn.svg" style="background-image: url('public/hero/3.webp');"></div>
+    <div class="hero__slide" data-color="#E770F1" data-logo="public/logo/logopink.svg" style="background-image: url('public/hero/4.webp');"></div>
+    <div class="hero__slide" data-color="#FF6443" data-logo="public/logo/logoorange.svg" style="background-image: url('public/hero/5.webp');"></div>
+    <div class="hero__slide" data-color="#F73E36" data-logo="public/logo/logorød.svg" style="background-image: url('public/hero/6.webp');"></div>
+    <div class="hero__slide" data-color="#DFFF8C" data-logo="public/logo/logosnot.svg" style="background-image: url('public/hero/7.webp');"></div>
+    <div class="hero__slide" data-color="#009C4C" data-logo="public/logo/logogrøn.svg" style="background-image: url('public/hero/8.webp');"></div>
+  </div>
+
+  <div class="hero__content">
+    <a class="hero__visit" href="#">
+      PLANLÆG DIT BESØG
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 5L16 12L8 19"></path>
+      </svg>
+    </a>
+
+    <img
+      class="hero__logo"
+      id="hero-logo"
+      src="public/logo/logo-1.svg"
+      alt="Vejen Kunstmuseum"
+    >
+  </div>
+
+  <div class="hero__bottom">
+    <a class="hero__scroll" href="#main">
+      SCROLL
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 5L16 12L8 19"></path>
+      </svg>
+    </a>
+
+    <div class="hero__indicators" aria-label="Slideshow navigation"></div>
+  </div>
+</section>
+
+<style>
+.hero {
+  position: relative;
+  width: 100%;
+  height: 92svh;
+  max-height: 100svh;
+  overflow: hidden;
+  background: #111;
+  color: var(--hero-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* SLIDES */
+.hero__slides {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: translateX(100%);
+  z-index: 1;
+  transition: transform 900ms cubic-bezier(.77, 0, .175, 1);
+  will-change: transform;
+}
+
+.hero__slide.is-active {
+  transform: translateX(0);
+  z-index: 3;
+}
+
+.hero__slide.is-leaving {
+  transform: translateX(-18%);
+  z-index: 2;
+}
+
+/* CONTENT */
+.hero__content {
+  position: absolute;
+  left: 18px;
+  bottom: 86px;
+  z-index: 10;
+  color: var(--hero-color);
+}
+
+.hero__visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: currentColor;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.hero__logo {
+  display: block;
+  width: min(65vw, 980px);
+  height: auto;
+}
+
+/* PILE */
+.arrow {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.hero__scroll .arrow {
+  transform: rotate(90deg);
+}
+
+/* BUND */
+.hero__bottom {
+  position: absolute;
+  left: 18px;
+  right: 24px;
+  bottom: 18px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: var(--hero-color);
+}
+
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: currentColor;
+  font-size: 12px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+/* INDIKATORER */
+.hero__indicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__indicator {
+  width: 23px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  background: var(--hero-color);
+  opacity: 0.35;
+  cursor: pointer;
+  transition: opacity 180ms ease, background-color 180ms ease;
+}
+
+.hero__indicator.is-active {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero__content {
+    left: 16px;
+    right: 16px;
+    bottom: 78px;
+  }
+
+  .hero__logo {
+    width: min(88vw, 620px);
+  }
+
+  .hero__visit {
+    font-size: 13px;
+  }
+
+  .hero__bottom {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .hero__indicator {
+    width: 18px;
+    height: 7px;
+  }
+}
+</style>
+
+<script>
+const hero = document.querySelector(".hero");
+const slides = Array.from(document.querySelectorAll(".hero__slide"));
+const indicatorsContainer = document.querySelector(".hero__indicators");
+const heroLogo = document.getElementById("hero-logo");
+
+let currentIndex = 0;
+let isAnimating = false;
+let autoplay;
+
+slides.forEach((slide, index) => {
+  const indicator = document.createElement("button");
+
+  indicator.className = "hero__indicator";
+  indicator.type = "button";
+  indicator.setAttribute("aria-label", `Gå til slide ${index + 1}`);
+
+  if (index === 0) indicator.classList.add("is-active");
+
+  indicator.addEventListener("click", () => {
+    goToSlide(index);
+    restartAutoplay();
+  });
+
+  indicatorsContainer.appendChild(indicator);
+});
+
+const indicators = Array.from(document.querySelectorAll(".hero__indicator"));
+
+function updateHero(index) {
+  const slide = slides[index];
+  const color = slide.dataset.color || "#d9ff72";
+  const logo = slide.dataset.logo;
+
+  hero.style.setProperty("--hero-color", color);
+
+  if (logo) {
+    heroLogo.src = logo;
+  }
+}
+
+function goToSlide(nextIndex) {
+  if (isAnimating || nextIndex === currentIndex) return;
+
+  isAnimating = true;
+
+  const previousIndex = currentIndex;
+  currentIndex = nextIndex;
+
+  slides[previousIndex].classList.remove("is-active");
+  slides[previousIndex].classList.add("is-leaving");
+
+  slides[nextIndex].classList.add("is-active");
+
+  indicators[previousIndex].classList.remove("is-active");
+  indicators[nextIndex].classList.add("is-active");
+
+  updateHero(nextIndex);
+
+  window.setTimeout(() => {
+    slides[previousIndex].classList.remove("is-leaving");
+    isAnimating = false;
+  }, 900);
+}
+
+function nextSlide() {
+  const nextIndex = (currentIndex + 1) % slides.length;
+  goToSlide(nextIndex);
+}
+
+function restartAutoplay() {
+  clearInterval(autoplay);
+  autoplay = setInterval(nextSlide, 5000);
+}
+
+updateHero(0);
+autoplay = setInterval(nextSlide, 5000);
+</script>

@@ -1,0 +1,346 @@
+<header class="header">
+  <div class="header__inner">
+
+    <div class="header__status">
+      <span id="status-text">Åbent</span>
+      <span id="status-dot"></span>
+    </div>
+
+    <a class="header__logo" href="/">
+      <img src="public/logo/logosort.svg" alt="Vejen Kunstmuseum">
+    </a>
+
+    <nav class="header__nav">
+
+      <div class="nav-item">
+        <a href="#">Planlæg besøg</a>
+        <div class="dropdown">
+          <div class="dropdown__left">
+            <a href="#" data-title="Åbningstider" data-color="#D9FF72">Åbningstider</a>
+            <a href="#" data-title="Find vej og parkering" data-color="#FF6443">Find vej og parkering</a>
+            <a href="#" data-title="Praktisk info og hjælp" data-color="#FFE144">Praktisk info og hjælp</a>
+            <a href="#" data-title="Billedskolen" data-color="#E770F1">Billedskolen</a>
+            <a href="#" data-title="Grupper og virksomheder" data-color="#D9FF72">For grupper og virksomheder</a>
+          </div>
+          <div class="dropdown__right">
+            <h2>Åbningstider</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="#">Udstillinger</a>
+        <div class="dropdown">
+          <div class="dropdown__left">
+            <a href="#" data-title="Aktuelle udstillinger" data-color="#FF6443">Aktuelle udstillinger</a>
+            <a href="#" data-title="Kommende udstillinger" data-color="#E770F1">Kommende udstillinger</a>
+            <a href="#" data-title="Tidligere udstillinger" data-color="#FFE144">Tidligere udstillinger</a>
+          </div>
+          <div class="dropdown__right">
+            <h2>Aktuelle udstillinger</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="#">Kalender</a>
+        <div class="dropdown">
+          <div class="dropdown__left">
+            <a href="#" data-title="Kalender" data-color="#E0E1E3">Kalender</a>
+            <a href="#" data-title="Besøg vores instagram" data-color="#E0E1E3">Besøg vores instagram</a>
+          </div>
+          <div class="dropdown__right">
+            <h2>Arrangementer</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="#">Museet</a>
+        <div class="dropdown">
+          <div class="dropdown__left">
+            <a href="#" data-title="Om Vejen Kunstmuseum" data-color="#E770F1">Om Vejen Kunstmuseum</a>
+            <a href="#" data-title="Vision for Vejen Kunstmuseum" data-color="#FFE144">Vision for Vejen Kunstmuseum</a>
+            <a href="#" data-title="Samling" data-color="#DFFF8C">Samling</a>
+            <a href="#" data-title="Historien" data-color="#69CB7E">Historien</a>
+          </div>
+          <div class="dropdown__right">
+            <h2>Om museet</h2>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-search" aria-label="Søg">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+          <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+
+    </nav>
+  </div>
+</header>
+
+<script>
+  const now = new Date();
+  const day = now.getDay();
+  const hour = now.getHours();
+
+  const text = document.getElementById("status-text");
+  const dot = document.getElementById("status-dot");
+
+  let isOpen = false;
+
+  if (day === 1) {
+    isOpen = false;
+  } else if (day >= 2 && day <= 5) {
+    isOpen = hour >= 10 && hour < 16;
+  } else {
+    isOpen = hour >= 11 && hour < 17;
+  }
+
+  text.textContent = isOpen ? "Åbent" : "Lukket";
+  dot.style.background = isOpen ? "#009C4C" : "#F73E36";
+
+  document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    const links = dropdown.querySelectorAll(".dropdown__left a");
+    const box = dropdown.querySelector(".dropdown__right");
+    const title = dropdown.querySelector(".dropdown__right h2");
+
+    links.forEach((link, index) => {
+      if (index === 0) {
+        link.classList.add("is-active");
+        box.style.setProperty("--dropdown-color", link.dataset.color);
+        title.textContent = link.dataset.title || link.textContent;
+      }
+
+      const activateLink = () => {
+        links.forEach((item) => item.classList.remove("is-active"));
+        link.classList.add("is-active");
+
+        title.textContent = link.dataset.title || link.textContent;
+        box.style.setProperty("--dropdown-color", link.dataset.color || "#D9FF72");
+      };
+
+      link.addEventListener("mouseenter", activateLink);
+      link.addEventListener("focus", activateLink);
+    });
+  });
+</script>
+
+<style>
+:root {
+  --color-text: #111;
+  --color-open: #009C4C;
+  --color-closed: #F73E36;
+  --color-dropdown-bg: white;
+  --color-lime: #D9FF72;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  font-family: var(--font-sans);
+}
+
+.header__inner {
+  position: relative;
+  height: 65px;
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: start;
+  padding: 20px 20px 0 72px;
+}
+
+/* STATUS */
+.header__status {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+#status-dot {
+  display: block;
+  width: 20px;
+  height: 8px;
+  background: var(--color-open);
+}
+
+/* LOGO */
+.header__logo {
+  position: absolute;
+  top: 16px;
+  left: 442px;
+  width: 100px;
+  display: block;
+  line-height: 0;
+}
+
+.header__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* NAV */
+.header__nav {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  justify-content: flex-end;
+  font-size: 14px;
+}
+
+.nav-item {
+  padding-bottom: 42px;
+}
+
+.nav-item > a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-item > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 160ms ease;
+}
+
+.nav-item:hover > a::after,
+.nav-item:focus-within > a::after {
+  width: 100%;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: fixed;
+  top: 62px;
+  left: 0;
+  width: 100vw;
+  min-height: 250px;
+  display: grid;
+  grid-template-columns: 72% 28%;
+  background: var(--color-dropdown-bg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown__left {
+  padding: 18px 40px 60px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dropdown__left a {
+  position: relative;
+  width: fit-content;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1.15;
+  color: inherit;
+  text-decoration: none;
+  letter-spacing: -0.8px;
+}
+
+.dropdown__left a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 160ms ease;
+}
+
+.dropdown__left a:hover::after,
+.dropdown__left a:focus::after,
+.dropdown__left a.is-active::after {
+  width: 100%;
+}
+
+.dropdown__right {
+  background: var(--dropdown-color, var(--color-lime));
+  padding: 16px 16px 40px 17px;
+  transition: background 180ms ease;
+}
+
+.dropdown__right h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+}
+
+/* SEARCH */
+.nav-search {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin-top: -4px;
+  color: inherit;
+  cursor: pointer;
+  line-height: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .header__inner {
+    padding-inline: 28px;
+    grid-template-columns: 150px 1fr;
+  }
+
+  .header__logo {
+    left: 260px;
+  }
+
+  .header__nav {
+    gap: 28px;
+  }
+
+  .dropdown {
+    grid-template-columns: 1fr;
+  }
+
+  .dropdown__right {
+    display: none;
+  }
+}
+</style>
