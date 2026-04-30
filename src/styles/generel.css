@@ -2,33 +2,33 @@
   /* === FARVER === */
 
   /* Primære farver */
-  --color-primary: [#009C4C];
-  --color-secondary: [#F73E36];
+  --color-primary: #009c4c;
+  --color-secondary: #f73e36;
 
   /* Tekst & Baggrund */
-  --color-text: [#1A1A1A];
-  --color-text-light: [#666666];
-  --color-bg: [white];
-  --color-bg-alt: [white];
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-bg: white;
+  --color-bg-alt: white;
 
   /* Accentfarver (tilføj så mange du har) */
-  --color-accent-1: [#FFE144];
-  --color-accent-2: [#DFFF8C];
-  --color-accent-3: [#69CB7E];
-  --color-accent-4: [#E770F1];
-  --color-accent-5: [#FF6443];
+  --color-accent-1: #ffe144;
+  --color-accent-2: #dfff8c;
+  --color-accent-3: #69cb7e;
+  --color-accent-4: #e770f1;
+  --color-accent-5: #ff6443;
 
   /* Knapper & Links */
-  --color-btn-text: [#1A1A1A];
-  --color-link: [#1A1A1A];
+  --color-btn-text: #1a1a1a;
+  --color-link: #1a1a1a;
 
   /* Kanter & Streger */
-  --color-border: [#1A1A1A];
-  --color-border-dark: [#1A1A1A];
+  --color-border: #1a1a1a;
+  --color-border-dark: #1a1a1a;
 
   /* Statusfarver */
-  --color-success: [#009C4C];
-  --color-error: [#F73E36];
+  --color-success: #009c4c;
+  --color-error: #f73e36;
 
   /* Typografi */
   --font-heading: "Nimbus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
