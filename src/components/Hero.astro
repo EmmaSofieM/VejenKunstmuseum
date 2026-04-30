@@ -1,13 +1,13 @@
 <section class="hero" style="--hero-color: #FFE144;">
   <div class="hero__slides">
-    <div class="hero__slide is-active" data-color="#FFE144" data-logo="public/logo/logogul.svg" style="background-image: url('public/hero/1.webp');"></div>
-    <div class="hero__slide" data-color="#DFFF8C" data-logo="public/logo/logosnot.svg" style="background-image: url('public/hero/2.webp');"></div>
-    <div class="hero__slide" data-color="#69CB7E" data-logo="public/logo/logolysgrøn.svg" style="background-image: url('public/hero/3.webp');"></div>
-    <div class="hero__slide" data-color="#E770F1" data-logo="public/logo/logopink.svg" style="background-image: url('public/hero/4.webp');"></div>
-    <div class="hero__slide" data-color="#FF6443" data-logo="public/logo/logoorange.svg" style="background-image: url('public/hero/5.webp');"></div>
-    <div class="hero__slide" data-color="#F73E36" data-logo="public/logo/logorød.svg" style="background-image: url('public/hero/6.webp');"></div>
-    <div class="hero__slide" data-color="#DFFF8C" data-logo="public/logo/logosnot.svg" style="background-image: url('public/hero/7.webp');"></div>
-    <div class="hero__slide" data-color="#009C4C" data-logo="public/logo/logogrøn.svg" style="background-image: url('public/hero/8.webp');"></div>
+    <div class="hero__slide is-active" data-color="#FFE144" data-logo="public/logo/logogul.svg" data-trold="public/logo/troldgul.svg" style="background-image: url('public/hero/1.webp');"></div>
+    <div class="hero__slide" data-color="#DFFF8C" data-logo="public/logo/logosnot.svg" data-trold="public/logo/troldsnot.svg" style="background-image: url('public/hero/2.webp');"></div>
+    <div class="hero__slide" data-color="#69CB7E" data-logo="public/logo/logolysgrøn.svg" data-trold="public/logo/troldlysgrøn.svg" style="background-image: url('public/hero/3.webp');"></div>
+    <div class="hero__slide" data-color="#E770F1" data-logo="public/logo/logopink.svg" data-trold="public/logo/troldpink.svg" style="background-image: url('public/hero/4.webp');"></div>
+    <div class="hero__slide" data-color="#FF6443" data-logo="public/logo/logoorange.svg" data-trold="public/logo/troldorange.svg" style="background-image: url('public/hero/5.webp');"></div>
+    <div class="hero__slide" data-color="#F73E36" data-logo="public/logo/logorød.svg" data-trold="public/logo/troldrød.svg" style="background-image: url('public/hero/6.webp');"></div>
+    <div class="hero__slide" data-color="#DFFF8C" data-logo="public/logo/logosnot.svg" data-trold="public/logo/troldsnot.svg" style="background-image: url('public/hero/7.webp');"></div>
+    <div class="hero__slide" data-color="#009C4C" data-logo="public/logo/logogrøn.svg" data-trold="public/logo/troldgrøn.svg" style="background-image: url('public/hero/8.webp');"></div>
   </div>
 
   <div class="hero__content">
@@ -21,7 +21,7 @@
     <img
       class="hero__logo"
       id="hero-logo"
-      src="public/logo/logo-1.svg"
+      src="public/logo/logogul.svg"
       alt="Vejen Kunstmuseum"
     >
   </div>
@@ -34,11 +34,26 @@
       </svg>
     </a>
 
-    <div class="hero__indicators" aria-label="Slideshow navigation"></div>
+    <div class="hero__right">
+      <img id="hero-trold" class="hero__trold" src="public/logo/troldgul.svg" alt="">
+      <div class="hero__indicators" aria-label="Slideshow navigation"></div>
+    </div>
   </div>
 </section>
 
 <style>
+    .hero__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.hero__trold {
+  width: 90px;
+  height: auto;
+  display: block;
+}
 .hero {
   position: relative;
   width: 100%;
@@ -199,6 +214,7 @@ const hero = document.querySelector(".hero");
 const slides = Array.from(document.querySelectorAll(".hero__slide"));
 const indicatorsContainer = document.querySelector(".hero__indicators");
 const heroLogo = document.getElementById("hero-logo");
+const heroTrold = document.getElementById("hero-trold");
 
 let currentIndex = 0;
 let isAnimating = false;
@@ -227,11 +243,16 @@ function updateHero(index) {
   const slide = slides[index];
   const color = slide.dataset.color || "#d9ff72";
   const logo = slide.dataset.logo;
+  const trold = slide.dataset.trold;
 
   hero.style.setProperty("--hero-color", color);
 
   if (logo) {
     heroLogo.src = logo;
+  }
+
+  if (trold && heroTrold) {
+    heroTrold.src = trold;
   }
 }
 
