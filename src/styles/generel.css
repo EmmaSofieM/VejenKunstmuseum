@@ -1,0 +1,121 @@
+:root {
+  /* === FARVER === */
+
+  /* Primære farver */
+  --color-primary: [#009C4C];
+  --color-secondary: [#F73E36];
+
+  /* Tekst & Baggrund */
+  --color-text: [#1A1A1A];
+  --color-text-light: [#666666];
+  --color-bg: [white];
+  --color-bg-alt: [white];
+
+  /* Accentfarver (tilføj så mange du har) */
+  --color-accent-1: [#FFE144];
+  --color-accent-2: [#DFFF8C];
+  --color-accent-3: [#69CB7E];
+  --color-accent-4: [#E770F1];
+  --color-accent-5: [#FF6443];
+
+  /* Knapper & Links */
+  --color-btn-text: [#1A1A1A];
+  --color-link: [#1A1A1A];
+
+  /* Kanter & Streger */
+  --color-border: [#1A1A1A];
+  --color-border-dark: [#1A1A1A];
+
+  /* Statusfarver */
+  --color-success: [#009C4C];
+  --color-error: [#F73E36];
+
+  /* Typografi */
+  --font-heading: "Nimbus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Nimbus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-h2: "Times New Roman", Times, serif;
+
+  /* Tekststørrelser */
+  --text-h1: 58px;
+  --text-h2: 30px;
+  --text-h3: 14px;
+  --text-p: 16px;
+  --text-small: 0.875rem;
+
+  /* Størrelser */
+  --size-xs: 0.75rem;
+  --size-sm: 0.875rem;
+  --size-base: 1rem;
+  --size-lg: 1.25rem;
+  --size-xl: 1.5rem;
+  --size-2xl: 2rem;
+  --size-3xl: 2.5rem;
+  --size-4xl: 3rem;
+}
+
+/* --- RESET & BASE --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* --- OVERSKRIFTER --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  font-weight: bold;
+}
+h2 {
+  font-size: var(--text-h2);
+  font-weight: regular;
+  font-family: var(--font-h2);
+}
+h3 {
+  font-size: var(--text-h3);
+  font-weight: light;
+}
+p {
+  font-size: var(--text-p);
+  line-height: 1.6;
+  margin-bottom: 1em;
+  font-weight: light;
+}
+
+/* --- LINKS --- */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
