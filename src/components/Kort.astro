@@ -1,0 +1,260 @@
+<section class="museum-map" aria-label="Interaktivt museumskort">
+  <div class="museum-map__image-wrap">
+    <img class="museum-map__image" src="/kort/kort.png" alt="Kort over Vejen Kunstmuseum">
+
+    <button class="map-pin" style="--x:16.5%;--y:39%;" data-id="01">01</button>
+    <button class="map-pin" style="--x:40.5%;--y:28%;" data-id="02">02</button>
+    <button class="map-pin" style="--x:48.5%;--y:6%;" data-id="03">03</button>
+    <button class="map-pin" style="--x:52%;--y:22%;" data-id="04">04</button>
+    <button class="map-pin" style="--x:64%;--y:22%;" data-id="05">05</button>
+    <button class="map-pin" style="--x:70.5%;--y:11%;" data-id="06">06</button>
+    <button class="map-pin" style="--x:72%;--y:43%;" data-id="07">07</button>
+    <button class="map-pin" style="--x:79%;--y:30%;" data-id="08">08</button>
+    <button class="map-pin" style="--x:72.8%;--y:55%;" data-id="09">09</button>
+    <button class="map-pin" style="--x:80%;--y:55%;" data-id="10">10</button>
+    <button class="map-pin" style="--x:87%;--y:55%;" data-id="11">11</button>
+    <button class="map-pin" style="--x:90.5%;--y:55%;" data-id="12">12</button>
+    <button class="map-pin" style="--x:85%;--y:70%;" data-id="13">13</button>
+    <button class="map-pin" style="--x:88%;--y:85%;" data-id="14">14</button>
+    <button class="map-pin" style="--x:80%;--y:85%;" data-id="15">15</button>
+    <button class="map-pin" style="--x:72%;--y:70%;" data-id="16">16</button>
+    <button class="map-pin" style="--x:61%;--y:83%;" data-id="17">17</button>
+    <button class="map-pin" style="--x:50%;--y:89%;" data-id="18">18</button>
+    <button class="map-pin" style="--x:36%;--y:89%;" data-id="19">19</button>
+    <button class="map-pin" style="--x:25%;--y:86%;" data-id="20">20</button>
+    <button class="map-pin is-active" style="--x:42.5%;--y:59%;" data-id="21">21</button>
+  </div>
+
+  <aside class="museum-map__panel" aria-live="polite"></aside>
+</section>
+
+<style>
+.museum-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 38px;
+  padding: 36px 40px;
+  background: #fff;
+  color: #1A1A1A;
+  font-family: var(--font-body);
+}
+
+.museum-map__image-wrap {
+  position: relative;
+  width: 85%;
+}
+
+.museum-map__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map-pin {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #1A1A1A;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.map-pin:hover,
+.map-pin:focus-visible,
+.map-pin.is-active {
+  background: #009C4C;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.map-pin:focus-visible {
+  outline: 2px solid #009C4C;
+  outline-offset: 3px;
+}
+
+.museum-map__panel {
+  padding-top: 4px;
+  min-height: 520px;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.museum-map__panel.is-changing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+:global(.panel-number) {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #009C4C;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+:global(.museum-map__panel h3) {
+  margin: 0 0 7px;
+  font-size: 12px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+:global(.museum-map__meta),
+:global(.museum-map__text) {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+:global(.museum-map__image-panel) {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 14px 0 54px;
+}
+
+/* CTA */
+:global(.map-cta) {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none !important;
+  position: relative;
+}
+
+:global(.map-cta::after) {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+:global(.map-cta:hover::after) {
+  width: 100%;
+}
+
+:global(.map-cta__arrow) {
+  width: 16px;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .museum-map {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 18px;
+  }
+
+  .museum-map__panel {
+    min-height: auto;
+  }
+
+  .map-pin {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
+}
+</style>
+
+<script>
+const mapData = {
+  "01": { title: "PORTRÆT AF EN UNG DIGTER", artist: "Willie Wulff", year: "1907", image: "/kort/1.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "02": { title: "VOR TIDS ANSIGT", artist: "Niels Hansen Jacobsen", year: "1921", image: "/kort/2.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "03": { title: "BJØRN NØRGAARDS LÅGE", artist: "Lågen er støbt på Uldalls Jernstøberi i Vejen", year: "", image: "/kort/3.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "04": { title: "EN KANTET KRUKKE UDEN KANTER - EN I SANDHEDEN BESYNDERLIG KRUKKE", artist: "Den blev i 2004 modelleret og brændt i ét stykke", year: "", image: "/kort/4.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "05": { title: "VØLVEN", artist: "Niels Hansen Jacobsen", year: "1913", image: "/kort/5.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "06": { title: "BØRNENES SKUR", artist: "Billedkunstskolen", year: "", image: "/kort/6.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "07": { title: "DØDEN OG MODEREN", artist: "Niels Hansen Jacobsen", year: "1892", image: "/kort/7.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "08": { title: "UGLERELIEFFET", artist: "Niels Hansen Jacobsen", year: "1923", image: "/kort/8.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "09": { title: "INDGANG", artist: "Vejen Kunstmuseum", year: "", image: "/kort/9.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "10": { title: "DE ÆLDSTE SALE", artist: "Vejen Kunstmuseum", year: "1924", image: "/kort/10.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "11": { title: "MODER JORD", artist: "Stephan Sinding", year: "1906", image: "/kort/11.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "12": { title: "ERIK HEIDES LÅGE", artist: "Uglerne er fremstillet på Skagen Jernstøberi", year: "", image: "/kort/12.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "13": { title: "HVÆLVET UNDER STÆREKASSEN", artist: "Ejnar Nielsen", year: "1935", image: "/kort/13.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "14": { title: "SKYEN", artist: "Niels Hansen Jacobsen", year: "1918", image: "/kort/14.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "15": { title: "SKIBELUNDSALEN", artist: "Vejen Kunstmuseum", year: "1914", image: "/kort/15.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "16": { title: "FRIHEDEN I ÅRHUNDREDS SLUTNING", artist: "Niels Hansen Jacobsen", year: "1896", image: "/kort/16.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "17": { title: "M-HUSET", artist: "Vejen Kunstmuseum", year: "2019", image: "/kort/17.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "18": { title: "NY MELLEM-BYGNING", artist: "Vejen Kunstmuseum", year: "2019", image: "/kort/18.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "19": { title: "DET GAMLE BIBLIOTEK", artist: "Vejen Kunstmuseum", year: "1940", image: "/kort/19.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "20": { title: "ORDSTRØMMEN", artist: "Hans og Birgitte Börjesons", year: "1999", image: "/kort/20.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." },
+  "21": { title: "EN TROLD, DER VEJER KRISTENKØD", artist: "Niels Hansen Jacobsen", year: "1896", image: "/kort/21.webp", text: "Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen." }
+};
+
+const panel = document.querySelector(".museum-map__panel");
+const pins = Array.from(document.querySelectorAll(".map-pin"));
+
+function renderPanel(id) {
+  const item = mapData[id];
+  if (!item) return;
+
+  panel.classList.add("is-changing");
+
+  window.setTimeout(() => {
+    panel.innerHTML = `
+      <div class="panel-number">${id}</div>
+      <h3>${item.title}</h3>
+      <p class="museum-map__meta">${item.artist}</p>
+      ${item.year ? `<p class="museum-map__meta">${item.year}</p>` : ""}
+      <img class="museum-map__image-panel" src="${item.image}" alt="">
+      <p class="museum-map__text">${item.text}</p>
+
+      <a class="map-cta" href="/planlaeg-besoeg">
+        PLANLÆG DIT BESØG
+        <svg class="map-cta__arrow" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5L16 12L8 19"></path>
+        </svg>
+      </a>
+    `;
+
+    pins.forEach((pin) => {
+      pin.classList.toggle("is-active", pin.dataset.id === id);
+      pin.setAttribute("aria-pressed", pin.dataset.id === id ? "true" : "false");
+    });
+
+    panel.classList.remove("is-changing");
+  }, 120);
+}
+
+pins.forEach((pin) => {
+  pin.type = "button";
+  pin.setAttribute("aria-label", `Vis punkt ${pin.dataset.id}`);
+  pin.setAttribute("aria-pressed", pin.classList.contains("is-active") ? "true" : "false");
+
+  pin.addEventListener("mouseenter", () => renderPanel(pin.dataset.id));
+  pin.addEventListener("focus", () => renderPanel(pin.dataset.id));
+  pin.addEventListener("click", () => renderPanel(pin.dataset.id));
+});
+
+renderPanel("21");
+</script>

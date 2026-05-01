@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Kort from '../components/Kort.astro';
+
 
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -10,4 +12,90 @@ import Hero from '../components/Hero.astro';
 
 <Layout>
 	<Hero />
+
+    <h2>Besøg museet</h2>
+    <p>Besøg os ved at bevæge musen hen over kortet.</p>
+	<Kort />
+    <h2>Om museet</h2>
+    <a class="map-cta" href="/ommuseet">
+  LÆS MERE
+  <svg class="map-cta__arrow" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M8 5L16 12L8 19"></path>
+  </svg>
+</a>
+<div class="bottom-hero">
+  <img src="public/andet/mosaikvæg.webp" alt="museum">
+</div>
+    
 </Layout>
+
+<style>
+    h2 {
+        font-weight: 500;
+        margin-top: 100px;
+        margin-left: 40px;
+    }
+
+    p {
+        margin-left: 40px;
+        max-width: 500px;
+    }
+
+.map-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+        margin-left: 40px;
+
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  position: relative;
+}
+
+/* underline */
+.map-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+
+  transition: width 0.2s ease;
+}
+
+/* hover = streg frem */
+.map-cta:hover::after {
+  width: 100%;
+}
+
+.map-cta__arrow {
+  width: 16px;
+  height: auto;
+
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  flex-shrink: 0;
+}
+
+.bottom-hero {
+  width: 100%;
+  margin-top: 20px; /* luft over */
+}
+
+.bottom-hero img {
+  width: 100%;
+  height: 90vh; /* justér højde */
+  object-fit: cover;
+  display: block;
+}
+</style>

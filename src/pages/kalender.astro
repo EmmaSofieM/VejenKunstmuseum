@@ -1,0 +1,39 @@
+---
+import KalenderCard from '../components/KalenderCard.astro';
+import Layout from "../layouts/Layout.astro"
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+---
+
+
+<Layout>
+     <header class="calendar__header">
+    <h1>Kalender</h1>
+    <p>
+      Her findes museets aktuelle arrangementer og aktiviteter.<br>
+      Få overblik over, hvad der sker, og planlæg besøget.
+    </p>
+  </header>
+
+ <Breadcrumbs
+  items={[
+    { label: "Forside", href: "/index" },
+    { label: "Kalender", href: "/kalender", active: true },
+   
+  ]}
+/>
+    <KalenderCard />
+</Layout>
+
+<style>
+
+      h1 {
+        font-family: var(--font-heading);
+        margin-top: 150px;
+        margin-left: 40px;
+    }
+
+        p {
+        margin-left: 40px;
+    }
+</style>

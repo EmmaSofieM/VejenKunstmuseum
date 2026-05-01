@@ -83,7 +83,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -93,7 +93,7 @@ h1 {
 }
 h2 {
   font-size: var(--text-h2);
-  font-weight: regular;
+  font-weight: 500;
   font-family: var(--font-h2);
 }
 h3 {
