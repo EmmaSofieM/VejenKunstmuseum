@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Kort from '../components/Kort.astro';
+import Kalender from '../components/KalenderCard.astro';
+
 
 
 
@@ -12,6 +14,21 @@ import Kort from '../components/Kort.astro';
 
 <Layout>
 	<Hero />
+<!-- udstillinger -->
+
+<!-- kalender -->
+
+<div class="calendar__intro">
+  <h2>Kalender</h2>
+
+  <a class="cta-inline" href="/kalender">
+SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8 5L16 12L8 19"></path>
+    </svg>
+  </a>
+</div>
+<Kalender frontpage />
+<!-- samling -->
 
     <h2>Besøg museet</h2>
     <p>Besøg os ved at bevæge musen hen over kortet.</p>
@@ -97,5 +114,60 @@ import Kort from '../components/Kort.astro';
   height: 90vh; /* justér højde */
   object-fit: cover;
   display: block;
+}
+
+.calendar__intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px; /* luft ned til listen */
+}
+
+
+/* din eksisterende CTA style genbrugt */
+.cta-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+margin-right: 40px;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  position: relative;
+}
+
+/* underline */
+.cta-inline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+
+  transition: width 0.2s ease;
+}
+
+/* hover */
+.cta-inline:hover::after {
+  width: 100%;
+}
+
+/* PIL — samme som resten af siden */
+.cta-inline__arrow {
+  width: 16px;
+  height: auto;
+
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  flex-shrink: 0;
 }
 </style>

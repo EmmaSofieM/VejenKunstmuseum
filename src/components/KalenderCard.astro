@@ -1,8 +1,12 @@
-<section class="calendar">
-  <div class="calendar__filter">
+---
+const { frontpage = false } = Astro.props;
+---
+
+<section class={`calendar ${frontpage ? "calendar--frontpage" : ""}`}>
+    <div class="calendar__filter">
     <button class="calendar__filter-button" type="button">
       Filter
-      <span>⌄</span>
+        <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
     </button>
 
     <div class="calendar__filter-menu">
@@ -11,22 +15,21 @@
       <button data-filter="Event">Event</button>
       <button data-filter="Marked">Marked</button>
       <button data-filter="Omvisning">Omvisning</button>
-      <button data-filter="Børn">Børn</button>
     </div>
   </div>
 
   <div class="calendar__list">
 
-    <article class="calendar-event is-open" data-category="Workshop">
-      <button class="calendar-event__top" type="button">
+<article class={`calendar-event ${frontpage ? "" : "is-open"}`} data-category="Workshop">
+        <button class="calendar-event__top" type="button">
         <div class="calendar-event__date"><span>Apr.</span><strong>25</strong></div>
         <div>Workshop</div>
         <div >11.00 - 15.00</div>
         <div >Kunstprojekt i Vejen Anlæg</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-1.webp" alt="">
+        <img src="/kalender/apr25.webp" alt="">
         <div>
           <p>Deltag i et fælles kunstprojekt i Vejen Anlæg.</p>
           <p>Sammen med kunstner Sophus Ejler Jepsen arbejdes der med mønstre og træplader, som bliver en del af et nyt samlingspunkt i området.</p>
@@ -44,10 +47,10 @@
         <div>Event</div>
         <div>13.00</div>
         <div>Bukettur - Rødding Præsteskov</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-2.webp" alt="">
+        <img src="/kalender/maj10.webp" alt="">
         <div>
           <p>Guidet tur i landskabet omkring Rødding Præsteskov.</p>
           <p>Fokus på natur, stedets historie og den fælles oplevelse i bevægelse.</p>
@@ -65,10 +68,10 @@
         <div>Marked</div>
         <div>10.00 - 16.00</div>
         <div>Craft Fair Vejen</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-3.webp" alt="">
+        <img src="/kalender/maj16.webp" alt="">
         <div>
           <p>To dage med kunsthåndværk og design.</p>
           <p>Mød udstillere og oplev værker inden for keramik, tekstil og formgivning.</p>
@@ -82,39 +85,18 @@
 
     <article class="calendar-event" data-category="Omvisning">
       <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Jun.</span><strong>02</strong></div>
-        <div>Omvisning</div>
-        <div>14.00</div>
-        <div>Omvisning i samlingen</div>
-        <span class="calendar-event__chevron">⌄</span>
-      </button>
-      <div class="calendar-event__body">
-        <img src="/kalender/event-4.webp" alt="">
-        <div>
-          <p>Kom tættere på museets faste samling.</p>
-          <p>Vi ser på centrale værker og fortæller om museets historie.</p>
-          <a class="calendar-cta" href="#" data-title="Omvisning i samlingen" data-description="Kom tættere på museets faste samling." data-location="Vejen Kunstmuseum" data-start="2026-06-02T14:00:00" data-end="2026-06-02T15:00:00">
-            Tilføj til kalender
-            <img src="/ikoner/kalender.svg" alt="">
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article class="calendar-event" data-category="Børn">
-      <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Jun.</span><strong>08</strong></div>
-        <div>Børn</div>
+        <div class="calendar-event__date"><span>Jun.</span><strong>06</strong></div>
+        <div>Foredrag</div>
         <div>11.00</div>
-        <div>Billedskole for børn</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <div>Niels Hansen Jacobsens køkkemødding</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-5.webp" alt="">
+        <img src="/kalender/jun6.webp" alt="">
         <div>
-          <p>En kreativ workshop for børn og familier.</p>
-          <p>Vi arbejder med farver, former og materialer inspireret af museets værker.</p>
-          <a class="calendar-cta" href="#" data-title="Billedskole for børn" data-description="En kreativ workshop for børn og familier." data-location="Vejen Kunstmuseum" data-start="2026-06-08T11:00:00" data-end="2026-06-08T13:00:00">
+          <p>Foredrag om udgravningen og arbejdet med Niels Hansen Jacobsens køkkemødding.</p>
+          <p> Afholdes i samarbejde med MKVO.</p>
+          <a class="calendar-cta" href="#" data-title="Niels Hansen Jacobsens køkkemødding" data-description="Foredrag om udgravningen og arbejdet med Niels Hansen Jacobsens køkkemødding." data-location="Vejen Kunstmuseum" data-start="2026-06-06T11:00:00" data-end="2026-06-06T12:00:00">
             Tilføj til kalender
             <img src="/ikoner/kalender.svg" alt="">
           </a>
@@ -124,18 +106,39 @@
 
     <article class="calendar-event" data-category="Event">
       <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Jun.</span><strong>21</strong></div>
+        <div class="calendar-event__date"><span>Jun.</span><strong>14</strong></div>
         <div>Event</div>
-        <div>19.00</div>
-        <div>Sommeraften på museet</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <div>13.00</div>
+        <div>Bukettur – De vilde blomster ved Skærsø</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-6.webp" alt="">
+        <img src="/kalender/jun14.webp" alt="">
         <div>
-          <p>En aften med kunst, samtale og stemning i museets rum.</p>
-          <p>Arrangementet kombinerer korte introduktioner med tid til fordybelse.</p>
-          <a class="calendar-cta" href="#" data-title="Sommeraften på museet" data-description="En aften med kunst, samtale og stemning i museets rum." data-location="Vejen Kunstmuseum" data-start="2026-06-21T19:00:00" data-end="2026-06-21T21:00:00">
+          <p>Tur med fokus på områdets flora og landskab.</p>
+          <p>En fælles oplevelse i naturen med formidling undervejs.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – De vilde blomster ved Skærsø" data-description="Tur med fokus på områdets flora og landskab." data-location="Skærsø" data-start="2026-06-14T13:00:00" data-end="2026-06-14T15:00:00">
+            Tilføj til kalender
+            <img src="/ikoner/kalender.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="calendar-event" data-category="Event">
+      <button class="calendar-event__top" type="button">
+        <div class="calendar-event__date"><span>Jul.</span><strong>19</strong></div>
+        <div>Event</div>
+        <div>13.00</div>
+        <div>Bukettur – Øster Lindet</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
+      </button>
+      <div class="calendar-event__body">
+        <img src="/kalender/jul19.webp" alt="">
+        <div>
+          <p>Tur fra Øster Lindet til Dinesens sted på Vråvej.</p>
+          <p>Fokus på landskab, bevægelse og fortællinger.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – Øster Lindet" data-description="Tur fra Øster Lindet til Dinesens sted på Vråvej." data-location="Øster Lindet" data-start="2026-07-19T13:00:00" data-end="2026-07-19T15:00:00">
             Tilføj til kalender
             <img src="/ikoner/kalender.svg" alt="">
           </a>
@@ -145,18 +148,18 @@
 
     <article class="calendar-event" data-category="Workshop">
       <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Jul.</span><strong>05</strong></div>
-        <div>Workshop</div>
-        <div>12.00 - 15.00</div>
-        <div>Keramik og ornamentik</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <div class="calendar-event__date"><span>Aug.</span><strong>16</strong></div>
+        <div>Event</div>
+        <div>13.00</div>
+        <div>Bukettur – Holsted Å</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-7.webp" alt="">
+        <img src="/kalender/aug16.webp" alt="">
         <div>
-          <p>Workshop med fokus på mønstre, overflader og keramiske former.</p>
-          <p>Deltagerne arbejder praktisk med inspiration fra samlingen.</p>
-          <a class="calendar-cta" href="#" data-title="Keramik og ornamentik" data-description="Workshop med fokus på mønstre, overflader og keramiske former." data-location="Vejen Kunstmuseum" data-start="2026-07-05T12:00:00" data-end="2026-07-05T15:00:00">
+          <p>Oplev naturgenopretning ved Gørklint Mølle.</p>
+          <p>Turen indeholder faglige perspektiver på vandløb og landskab.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – Holsted Å" data-description="Oplev naturgenopretning ved Gørklint Mølle." data-location="Holsted Å" data-start="2026-08-16T13:00:00" data-end="2026-08-16T15:00:00">
             Tilføj til kalender
             <img src="/ikoner/kalender.svg" alt="">
           </a>
@@ -166,18 +169,18 @@
 
     <article class="calendar-event" data-category="Omvisning">
       <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Aug.</span><strong>17</strong></div>
-        <div>Omvisning</div>
-        <div>13.30</div>
-        <div>Niels Hansen Jacobsen</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <div class="calendar-event__date"><span>Sep.</span><strong>06</strong></div>
+        <div>Event</div>
+        <div>13.00</div>
+        <div>Bukettur – Naturens Dag</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-8.webp" alt="">
+        <img src="/kalender/sep6.webp" alt="">
         <div>
-          <p>En omvisning om Niels Hansen Jacobsen og hans betydning for museet.</p>
-          <p>Vi ser på skulpturer, keramik og museets tidlige historie.</p>
-          <a class="calendar-cta" href="#" data-title="Niels Hansen Jacobsen" data-description="En omvisning om Niels Hansen Jacobsen og hans betydning for museet." data-location="Vejen Kunstmuseum" data-start="2026-08-17T13:30:00" data-end="2026-08-17T15:00:00">
+          <p>Bukettur ved Jels Voldsted i forbindelse med Naturens Dag.</p>
+          <p>Fokus på fællesskab og oplevelse i naturen.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – Naturens Dag" data-description="Bukettur ved Jels Voldsted i forbindelse med Naturens Dag." data-location="Jels Voldsted" data-start="2026-09-06T13:00:00" data-end="2026-09-06T15:00:00">
             Tilføj til kalender
             <img src="/ikoner/kalender.svg" alt="">
           </a>
@@ -187,39 +190,38 @@
 
     <article class="calendar-event" data-category="Marked">
       <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Sep.</span><strong>06</strong></div>
-        <div>Marked</div>
-        <div>10.00 - 15.00</div>
-        <div>Kunstmarked i gården</div>
-        <span class="calendar-event__chevron">⌄</span>
-      </button>
-      <div class="calendar-event__body">
-        <img src="/kalender/event-9.webp" alt="">
-        <div>
-          <p>Mød lokale kunstnere og kunsthåndværkere.</p>
-          <p>Markedet samler værker, materialer og små fortællinger om skabelse.</p>
-          <a class="calendar-cta" href="#" data-title="Kunstmarked i gården" data-description="Mød lokale kunstnere og kunsthåndværkere." data-location="Vejen Kunstmuseum" data-start="2026-09-06T10:00:00" data-end="2026-09-06T15:00:00">
-            Tilføj til kalender
-            <img src="/ikoner/kalender.svg" alt="">
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article class="calendar-event" data-category="Event">
-      <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Okt.</span><strong>12</strong></div>
+        <div class="calendar-event__date"><span>Okt.</span><strong>25</strong></div>
         <div>Event</div>
-        <div>16.00</div>
-        <div>Kunstnersamtale</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <div>13.00</div>
+        <div>Bukettur – Løbners Plantage</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-10.webp" alt="">
+        <img src="/kalender/okt25.webp" alt="">
         <div>
-          <p>Samtale om kunstnerisk praksis, materialer og museets samling.</p>
-          <p>Arrangementet afsluttes med spørgsmål fra publikum.</p>
-          <a class="calendar-cta" href="#" data-title="Kunstnersamtale" data-description="Samtale om kunstnerisk praksis, materialer og museets samling." data-location="Vejen Kunstmuseum" data-start="2026-10-12T16:00:00" data-end="2026-10-12T17:30:00">
+          <p>Guidet tur i Løbners Plantage.</p>
+          <p>Oplev området gennem fortællinger og fælles vandring.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – Løbners Plantage" data-description="Guidet tur i Løbners Plantage." data-location="Vejen Kunstmuseum" data-start="2026-10-25T13:00:00" data-end="2026-10-25T15:00:00">
+            Tilføj til kalender
+            <img src="/ikoner/kalender.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+    <article class="calendar-event" data-category="Marked">
+      <button class="calendar-event__top" type="button">
+        <div class="calendar-event__date"><span>Nov.</span><strong>08</strong></div>
+        <div>Event</div>
+        <div>13.00</div>
+        <div>Bukettur – Kongeåen</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
+      </button>
+      <div class="calendar-event__body">
+        <img src="/kalender/nov8.webp" alt="">
+        <div>
+          <p>Besøg ved Vejen Renseanlæg og området omkring Kongeåen.</p>
+          <p>Indblik i landskab og natur i forandring.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – Kongeåen" data-description="Besøg ved Vejen Renseanlæg og området omkring Kongeåen." data-location="Vejen Kunstmuseum" data-start="2026-11-08T13:00:00" data-end="2026-11-08T15:00:00">
             Tilføj til kalender
             <img src="/ikoner/kalender.svg" alt="">
           </a>
@@ -227,20 +229,20 @@
       </div>
     </article>
 
-    <article class="calendar-event" data-category="Børn">
+        <article class="calendar-event" data-category="Marked">
       <button class="calendar-event__top" type="button">
-        <div class="calendar-event__date"><span>Nov.</span><strong>23</strong></div>
-        <div>Børn</div>
-        <div>11.00 - 14.00</div>
-        <div>Familieværksted</div>
-        <span class="calendar-event__chevron">⌄</span>
+        <div class="calendar-event__date"><span>Dec.</span><strong>08</strong></div>
+        <div>Event</div>
+        <div>13.00</div>
+        <div>Bukettur – Haraldsholm Skov</div>
+        <span class="calendar-event__chevron"><img src="/ikoner/pil.svg" alt=""></span>
       </button>
       <div class="calendar-event__body">
-        <img src="/kalender/event-11.webp" alt="">
+        <img src="/kalender/dec8.webp" alt="">
         <div>
-          <p>Et åbent værksted for børn og voksne.</p>
-          <p>Vi arbejder kreativt med inspiration fra museets udstillinger.</p>
-          <a class="calendar-cta" href="#" data-title="Familieværksted" data-description="Et åbent værksted for børn og voksne." data-location="Vejen Kunstmuseum" data-start="2026-11-23T11:00:00" data-end="2026-11-23T14:00:00">
+          <p>Årets afsluttende tur i Haraldsholm Skov.</p>
+          <p>Oplev vinterlandskabet i fællesskab.</p>
+          <a class="calendar-cta" href="#" data-title="Bukettur – Haraldsholm Skov" data-description="Årets afsluttende tur i Haraldsholm Skov." data-location="Vejen Kunstmuseum" data-start="2026-12-08T13:00:00" data-end="2026-12-08T15:00:00">
             Tilføj til kalender
             <img src="/ikoner/kalender.svg" alt="">
           </a>
@@ -335,8 +337,14 @@ font-size: 14px;
 }
 
 .calendar-event__date span,
-.calendar-event__top > div {
+.calendar-event__top > div:nth-child(2) {
   font-size: 12px;
+  line-height: 1.25;
+}
+
+.calendar-event__top > div:nth-child(3),
+.calendar-event__top > div:nth-child(4) {
+  font-size: 16px;
   line-height: 1.25;
 }
 
@@ -354,12 +362,16 @@ font-size: 14px;
   justify-self: end;
   transition: transform 180ms ease;
 }
+.calendar-event__chevronned {
+   transform: rotate(90deg);
 
+}
 .calendar-event.is-open .calendar-event__chevron {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .calendar-event__body {
+margin-left: 105px;
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
   gap: 24px;
@@ -421,6 +433,15 @@ font-size: 14px;
 }
 
 .calendar-event.is-hidden {
+  display: none;
+}
+
+/* FORSIDE VERSION */
+.calendar--frontpage .calendar-event:nth-of-type(n+6) {
+  display: none;
+}
+
+.calendar--frontpage .calendar__filter {
   display: none;
 }
 
