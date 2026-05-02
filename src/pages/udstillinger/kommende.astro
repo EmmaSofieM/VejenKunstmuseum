@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import UdstillingsSlider from '../../components/UdstillingsSlider.astro';
+
+const exhibitions = [
+  {
+    image: "/udstillinger/rasmusklump.webp",
+    caption: "Den nysgerrige bjørn og hans venner",
+    color: "#E770F1",
+    date: "Oktober 2026 – marts 2027",
+    title: "Rasmus Klump",
+    lead: "Rasmus Klump ankom til Vejen Kunstmuseum den 12. november 2025 som en del af museets arbejde frem mod en kommende udstilling. Figuren er placeret i museets rum og indgår i en sammenhæng med samlingen, hvor den blandt andet vises i dialog med værker af Axel Salto.",
+    text: "Fra oktober 2026 præsenterer museet en udstilling om Rasmus Klump og det univers, figuren indgår i. Udstillingen perspektiverer museets samling af Ingrid Vang Nymans værker samt tidligere udstillinger om hendes liv og arbejde, herunder fokus på hendes bidrag til illustration og billedfortælling. Udstillingen omfatter ikke alene Rasmus Klump, men også tegneren Vilhelm Hansen og Carla Hansen samt deres samlede produktion. Her inddrages et bredere udsnit af dansk børnebogsillustration, herunder mindre kendte arbejder. Blandt andet vises materiale relateret til den såkaldte “dråbemand”, udviklet til ESSO, som opnåede international udbredelse.",
+    cta: "Planlæg dit besøg"
+  },
+  {
+    image: "/udstillinger/ludvig.webp",
+    caption: "Ludvig Find",
+    color: "#DFFF8C",
+    date: "Dato følger",
+    title: "Ludvig Find",
+    lead: "Tre jyske kunstmuseer samarbejdede i 2019 om at præsentere den første retrospektive udstilling om Ludvig Find siden 1940’erne. Udstillingen blev realiseret i samarbejde mellem Skovgaard Museet, Kunstmuseet Brundlund Slot og Vejen Kunstmuseum.",
+    text: "Ludvig Find (1869–1945) er en central skikkelse i dansk kunst omkring år 1900 og er ofte blevet omtalt som “børnenes maler”. Betegnelsen knytter sig til hans skildringer af børn og hverdagsliv, men hans virke rummer også et omfattende arbejde som portrætmaler. Udstillingen samlede værker fra forskellige perioder og gav et samlet indblik i Finds kunstneriske udvikling og placering i en bredere kunsthistorisk sammenhæng.",
+    cta: "Planlæg dit besøg"
+  },
+  {
+    image: "/udstillinger/keramik.webp",
+    caption: "Møller & Bøgely's keramiske Kunstbrænderi",
+    color: "#FFE144",
+    date: "Dato følger",
+    title: "Møller & Bøgely",
+    lead: "Vejen Kunstmuseum arbejder frem mod en udstilling om Møller & Bøgelys kunstkeramiske værksted, etableret i 1917 i Snedkersten. Værkstedet opstod i forlængelse af lukningen af Skotterup Lervarefabrik og markerer en overgang fra traditionel produktion til en mere kunstnerisk tilgang til keramik.",
+    text: "Bag virksomheden stod arkitekt Mads Peter Bøgely og maler Eilif Møller. Værkstedet fungerede som et eksperimenterende miljø, hvor flere kunstnere arbejdede med keramikkens muligheder.Udstillingen vil undersøge værkstedets produktion og betydning med udgangspunkt i værker og arkivmateriale, herunder breve, som bidrager til en større forståelse af en ellers sparsomt belyst periode i dansk keramikhistorie.",
+    cta: "Planlæg dit besøg"
+  }
+];
+---
+
+<Layout>
+  <UdstillingsSlider
+    title="Kommende udstillinger"
+    intro="Her præsenteres museets kommende udstillinger. Gå på opdagelse i, hvad der vises om snart, og få et overblik over indhold, kunstnere og perioder."
+    activeTab="kommende"
+    items={exhibitions}
+  />
+</Layout>

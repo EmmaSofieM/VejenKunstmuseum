@@ -1,0 +1,61 @@
+---
+const { label, person, quote } = Astro.props;
+---
+
+<section class="quote-block">
+  <div class="quote-block__meta">
+    <strong><span>{label}</span></strong>
+    <strong>{person}</strong>
+  </div>
+
+  <blockquote>{quote}</blockquote>
+</section>
+
+<style>
+.quote-block {
+  display: grid;
+  grid-template-columns: 600px minmax(0, 720px);
+  gap: 90px;
+  margin: 120px 0;
+  align-items: end;
+}
+
+.quote-block__meta {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 150px;
+  align-items: end;
+  font-size: 14px;
+  line-height: 1.15;
+  transform: translateY(-18px);
+}
+
+.quote-block blockquote {
+  margin: 0;
+  max-width: 680px;
+  font-size: 30px;
+  line-height: 1.22;
+  font-weight: 700;
+}
+
+.quote-block blockquote::before {
+  content: "“";
+  display: block;
+  font-size: 30px;
+  line-height: 0.7;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+  .quote-block {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin: 60px 0;
+  }
+
+  .quote-block__meta {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+</style>

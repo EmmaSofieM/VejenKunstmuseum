@@ -1,0 +1,41 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SamlingCard from '../../components/SamlingCard.astro';
+
+
+---
+
+<Layout>
+<h1>Samling</h1>
+    <p>
+      Her præsenteres udvalgte værker fra museets samling i en samlet oversigt. <br>
+      Få et overblik over materialer, kunstnere og perioder i samlingen.
+    </p>
+  </header>
+
+   <Breadcrumbs
+      items={[
+        { label: "Om museet", href: "/ommuseet"},
+        { label: "Historie", href: "/ommuseet/historie" },
+        { label: "Samling", href: "/ommuseet/samling" , active: true },
+        { label: "Vision", href: "/ommuseet/vision" }
+      ]}
+    />
+
+<SamlingCard />
+
+</Layout>
+
+<style>
+      h1 {
+        font-family: var(--font-heading);
+        margin-top: 150px;
+        margin-left: 40px;
+    }
+
+        p {
+        margin-left: 40px;
+    }
+
+</style>

@@ -1,0 +1,42 @@
+<section class="image-collage">
+  <img class="image-collage__small" src="/andet/dameskulptur.webp" alt="Dameskulptur">
+  <img class="image-collage__large" src="/andet/teresaogbodil.webp" alt="Teresa Nielsen og Bodil Hansen">
+  <img class="image-collage__small" src="/andet/teresaogmaria.webp" alt="Teresa Nielsen og Maria Jacobsen">
+  <img class="image-collage__large" src="/andet/ophæng.webp" alt="Ophængning af kunstværker">
+</section>
+
+<style>
+.image-collage {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 24px;
+  margin-top: 120px;
+  align-items: start;
+}
+
+.image-collage img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-collage__small {
+  aspect-ratio: 1.35 / 1;
+}
+
+.image-collage__large {
+  aspect-ratio: 1.45 / 1;
+}
+
+
+
+@media (max-width: 900px) {
+  .image-collage {
+    grid-template-columns: 1fr;
+  }
+
+  .image-collage img:nth-child(3) {
+    margin-top: 0;
+  }
+}
+</style>
