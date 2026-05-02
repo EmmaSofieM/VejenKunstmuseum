@@ -10,17 +10,7 @@ const {
 ---
 
 <section class="exhibition-page">
-  <header class="exhibition-header">
-    <h1>
-      Kommende<br>
-      udstillinger
-    </h1>
-
-    <p>
-      Her præsenteres museets kommende udstillinger.<br>
-      Få overblik over, hvad der venter.
-    </p>
-  </header>
+  
 
   <Breadcrumbs
     items={[
@@ -73,8 +63,17 @@ const {
 </section>
 
 <style>
+
+.exhibition-content {
+  opacity: 0.60;
+  transition: opacity 0.3s ease;
+}
+
+.exhibition-slide.is-active .exhibition-content {
+  opacity: 1;
+}
 .exhibition-page {
-  margin: 150px 0 150px;
+  margin-bottom: 150px;
   color: #1A1A1A;
   font-family: var(--font-body);
   overflow: hidden;
@@ -133,7 +132,7 @@ const {
 
 .exhibition-image img {
   width: 100%;
-  height: 80vh;
+  height:70vh;
   object-fit: cover;
   display: block;
 }
@@ -286,4 +285,32 @@ document.querySelectorAll(".exhibition-slide").forEach((slide) => {
   prev.addEventListener("click", () => scroll(-1));
   next.addEventListener("click", () => scroll(1));
 });
+
+const slides = document.querySelectorAll(".exhibition-slide");
+const slider = document.querySelector(".exhibition-slider");
+
+function updateActiveSlide() {
+  let closestSlide = null;
+  let closestOffset = Infinity;
+
+  slides.forEach((slide) => {
+    const rect = slide.getBoundingClientRect();
+    const offset = Math.abs(rect.left);
+
+    if (offset < closestOffset) {
+      closestOffset = offset;
+      closestSlide = slide;
+    }
+  });
+
+  slides.forEach((slide) => {
+    slide.classList.toggle("is-active", slide === closestSlide);
+  });
+}
+
+slider.addEventListener("scroll", () => {
+  requestAnimationFrame(updateActiveSlide);
+});
+
+updateActiveSlide();
 </script>

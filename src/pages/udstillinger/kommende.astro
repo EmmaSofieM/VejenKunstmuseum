@@ -26,7 +26,7 @@ const exhibitions = [
   {
     image: "/udstillinger/keramik.webp",
     caption: "Møller & Bøgely's keramiske Kunstbrænderi",
-    color: "#FFE144",
+    color: "#F73E36",
     date: "Dato følger",
     title: "Møller & Bøgely",
     lead: "Vejen Kunstmuseum arbejder frem mod en udstilling om Møller & Bøgelys kunstkeramiske værksted, etableret i 1917 i Snedkersten. Værkstedet opstod i forlængelse af lukningen af Skotterup Lervarefabrik og markerer en overgang fra traditionel produktion til en mere kunstnerisk tilgang til keramik.",
@@ -37,10 +37,42 @@ const exhibitions = [
 ---
 
 <Layout>
+    <header class="exhibition-header">
+    <h1>
+      Kommende<br>
+      udstillinger
+    </h1>
+
+    <p>
+      Her præsenteres museets kommende udstillinger.<br>
+      Få overblik over, hvad der venter.
+    </p>
+  </header>
   <UdstillingsSlider
-    title="Kommende udstillinger"
-    intro="Her præsenteres museets kommende udstillinger. Gå på opdagelse i, hvad der vises om snart, og få et overblik over indhold, kunstnere og perioder."
+  
     activeTab="kommende"
     items={exhibitions}
   />
 </Layout>
+
+<style>
+
+.exhibition-header {
+margin-top: 150px;
+
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+.exhibition-header h1 {
+  max-width: 520px;
+  line-height: 0.95;
+}
+
+.exhibition-header p {
+  margin-top: 10px;
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+</style>
