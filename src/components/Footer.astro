@@ -91,6 +91,15 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 80px;
 }
+.footer-col a {
+  transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-col a:hover {
+  opacity: 0.7;
+  transform: translateX(3px);
+}
+
 .footer-col {
   display: flex;
   flex-direction: column;
@@ -104,6 +113,14 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+.footer-contact a {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-contact a:hover {
+  opacity: 0.7;
+}
+
 .footer-contact {
   margin-top: 40px;
   max-width: 320px;
@@ -144,6 +161,12 @@
   padding: 6px 0;
   font-size: 14px;
   outline: none;
+  color: #1A1A1A;
+  transition: opacity 0.3s ease;
+}
+
+.newsletter-input input:focus {
+  opacity: 0.8;
 }
 .newsletter-input button {
   border: none;
@@ -152,6 +175,16 @@
   cursor: pointer;
   color: #1A1A1A;
   padding: 0 8px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.newsletter-input button:hover {
+  opacity: 0.7;
+  transform: scale(1.15);
+}
+
+.newsletter-input button:active {
+  transform: scale(0.95);
 }
 .newsletter-check {
   display: flex;
