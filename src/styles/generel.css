@@ -53,6 +53,19 @@
   --size-4xl: 3rem;
 }
 
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("/fonts/Nimbus-Sans-D-OT-Light_32752.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("/fonts/Nimbus-Sans-D-OT-Bold_32747.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
 /* --- RESET & BASE --- */
 *,
 *::before,
