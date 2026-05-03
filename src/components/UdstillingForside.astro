@@ -1,0 +1,155 @@
+<section class="front-exhibitions">
+  <div class="front-exhibitions__top">
+    <h2>Aktuelle udstillinger</h2>
+
+    <div class="front-exhibitions__arrows">
+      <button class="front-exhibitions__arrow front-exhibitions__arrow--prev" type="button" aria-label="Forrige">‹</button>
+      <button class="front-exhibitions__arrow front-exhibitions__arrow--next" type="button" aria-label="Næste">›</button>
+    </div>
+  </div>
+
+  <div class="front-exhibitions__slider">
+    <a class="front-exhibition-card" href="/udstillinger/aktuelle">
+      <img src="/udstillinger/palshus.webp" alt="PALSHUS keramik">
+      <div class="front-exhibition-card__caption" style="--card-color:#FF6443;">
+        PALSHUS keramik
+      </div>
+    </a>
+
+    <a class="front-exhibition-card" href="/udstillinger/aktuelle">
+      <img src="/udstillinger/kawaii.webp" alt="Kawaii Nostalgi – fra Japan til Pippi">
+      <div class="front-exhibition-card__caption" style="--card-color:#69CB7E;">
+        Kawaii Nostalgi – fra Japan til Pippi
+      </div>
+    </a>
+
+    <a class="front-exhibition-card" href="/udstillinger/aktuelle">
+      <img src="/udstillinger/feminist.webp" alt="Kirsten Justesen - Danner Sidespor">
+      <div class="front-exhibition-card__caption" style="--card-color:#E770F1;">
+        Kirsten Justesen - Danner Sidespor
+      </div>
+    </a>
+
+    <a class="front-exhibition-card" href="/udstillinger/aktuelle">
+      <img src="/udstillinger/veninder.webp" alt="Veninder, kolleger, kvindelige kunstnere">
+      <div class="front-exhibition-card__caption" style="--card-color:#DFFF8C;">
+        Veninder, kolleger, kvindelige kunstnere
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+.front-exhibitions {
+  margin: 100px 0px 80px 0px;
+  margin-left: 40px;
+  color: #1A1A1A;
+  font-family: var(--font-body);
+}
+
+.front-exhibitions__top {
+  margin: 0 40px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.front-exhibitions__top h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.front-exhibitions__arrows {
+  display: flex;
+  gap: 18px;
+}
+
+.front-exhibitions__arrow {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #1A1A1A;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.front-exhibitions__arrow:hover {
+  text-decoration: underline;
+}
+
+.front-exhibitions__slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 72vw;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.front-exhibitions__slider::-webkit-scrollbar {
+  display: none;
+}
+
+.front-exhibition-card {
+  scroll-snap-align: start;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.front-exhibition-card img {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  display: block;
+}
+
+.front-exhibition-card__caption {
+  background: var(--card-color);
+  padding: 8px 10px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .front-exhibitions {
+    margin: 70px 0 60px;
+  }
+
+  .front-exhibitions__top {
+    margin: 0 16px 14px;
+  }
+
+  .front-exhibitions__slider {
+    grid-auto-columns: 88vw;
+  }
+
+  .front-exhibition-card img {
+    height: 42vh;
+  }
+}
+</style>
+
+<script>
+const frontExhibitionSlider = document.querySelector(".front-exhibitions__slider");
+const frontExhibitionPrev = document.querySelector(".front-exhibitions__arrow--prev");
+const frontExhibitionNext = document.querySelector(".front-exhibitions__arrow--next");
+
+function scrollFrontExhibitions(direction) {
+  const card = frontExhibitionSlider.querySelector(".front-exhibition-card");
+  const amount = card.offsetWidth + 8;
+
+  frontExhibitionSlider.scrollBy({
+    left: direction * amount,
+    behavior: "smooth"
+  });
+}
+
+frontExhibitionPrev.addEventListener("click", () => scrollFrontExhibitions(-1));
+frontExhibitionNext.addEventListener("click", () => scrollFrontExhibitions(1));
+</script>

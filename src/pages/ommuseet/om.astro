@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeroImage from '../../components/PageHeroImage.astro';
+import QuoteBlock from '../../components/QuoteBlock.astro';
+import StaffCards from '../../components/StaffCards.astro';
+import ImageCollage from '../../components/ImageCollage.astro';
+---
+
+<Layout>
+  <main class="about-page">
+    <h1>Om Vejen Kunstmuseum</h1>
+
+    <Breadcrumbs
+      items={[
+        { label: "Om museet", href: "/ommuseet", active: true },
+        { label: "Historie", href: "/ommuseet/historie" },
+        { label: "Samling", href: "/ommuseet/samling" },
+        { label: "Vision", href: "/ommuseet/vision" }
+      ]}
+    />
+
+    <PageHeroImage
+      image="/andet/keramikhus.webp"
+      alt="Keramiksamlingen på Vejen Kunstmuseum"
+      caption="Keramiksamlingen"
+      color="#E770F1"
+    />
+
+    <section class="about-intro">
+      <div>
+        <h2>
+          Vejen Kunstmuseum er et kunstmuseum med fokus på dansk symbolisme og med billedhuggeren Niels Hansen Jacobsen (1861–1941) som omdrejningspunkt. <br>
+          Museet blev grundlagt i 1924 og er et af de få museer i Danmark, der oprindeligt er opført til en kunstner, mens han stadig var i live.
+        </h2>
+
+        <p>
+          I dag rummer museet en omfattende samling af skulptur, keramik og kunst fra perioden omkring år 1900 samt værker, der sætter perioden i perspektiv. <br>
+          Samlingen er dermed både lokalt forankret og en del af en større fortælling om dansk kunsthistorie.
+        </p>
+
+        <p>
+          Museet er bygget op omkring Niels Hansen Jacobsens liv og værk og rummer både hans skulpturer, keramik og tegninger.
+        </p>
+      </div>
+
+      <img src="/andet/nielsportræt.webp" alt="Niels Hansen Jacobsen">
+    </section>
+
+    <QuoteBlock
+      label="Udtalelse af"
+      person="Museumsdirektør Teresa Nielsen"
+      quote="Det handler om at gøre kunsten tilgængelig, uden at gøre den enklere. Nysgerrigheden skal have plads, og det skal være muligt at gå på opdagelse i sit eget tempo."
+    />
+
+    <section class="about-text-image">
+      <div>
+        <p>
+          Siden begyndelsen har museets ambition været at formidle kunst på en måde, hvor historien, materialerne og det menneskelige nærvær står centralt. <br>
+          Museet fungerer både som udstillingssted, samling og levende ramme om aktiviteter for børn og voksne.
+        </p>
+
+        <p>
+          Vejen Kunstmuseum arbejder med formidling, læring, udstillinger og nye publikumsformater, som inviterer flere ind i mødet med kunsten. <br>
+          Det historiske udgangspunkt er stadig tydeligt, men museet er i konstant udvikling.
+        </p>
+
+        <p>
+          Museet arbejder for at gøre kunsten nærværende og relevant — både for lokale besøgende, skoleklasser og gæster udefra.
+        </p>
+      </div>
+
+      <img src="/andet/dronningen.webp" alt="Formidling på museet">
+    </section>
+
+    <StaffCards />
+
+    <ImageCollage />
+  </main>
+</Layout>
+
+<style>
+.about-page {
+  margin: 0 40px 120px;
+  color: #1A1A1A;
+  font-family: var(--font-body);
+}
+
+.about-page h1 {
+  margin: 150px 0 40px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 0.95;
+  font-weight: 700;
+}
+
+.about-page :global(.breadcrumbs) {
+  margin-left: 0;
+  margin-bottom: 8px;
+}
+
+.about-intro,
+.about-text-image {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 80px;
+  margin-top: 42px;
+  align-items: start;
+}
+
+.about-intro h2 {
+  margin: 0 0 42px;
+  max-width: 800px;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.about-page p {
+  margin: 0 0 26px;
+  font-size: 16px;
+  line-height: 1.45;
+    max-width: 800px;
+
+}
+
+.about-intro img,
+.about-text-image img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .about-page {
+    margin: 0 16px 80px;
+  }
+
+  .about-intro,
+  .about-text-image {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+</style>

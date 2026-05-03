@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import UdstillingsSlider from '../../components/UdstillingsSlider.astro';
+
+const exhibitions = [
+  {
+    image: "/udstillinger/palshus.webp",
+    caption: "PALSHUS keramik",
+    color: "#FF6443",
+    date: "Marts 2026 – september 2027",
+    title: "PALSHUS keramik",
+    lead: "Palshus blev grundlagt af Per og Annelise Linnemann-Schmidt og havde produktion i Sengeløse frem til 1972. Virksomheden tog sin begyndelse i 1947 i samarbejde med keramikfirmaet Eslau, hvor Per Linnemann-Schmidt formgav et mokkastel i lertøj. Fra 1949 blev produktionen etableret i egne lokaler under navnet Palshus.",
+    text: "Udstillingen sætter Palshus ind i en kunsthistorisk sammenhæng og viderefører museets arbejde med dansk stentøj, herunder tidligere udstillinger om Arne Bang og SAXBO. Palshus’ produktion er kendetegnet ved en strømlinet og funktionel formgivning, hvor ambitionen var at skabe et mere tilgængeligt stentøj gennem en rationel og prisbevidst produktion. De tidlige arbejder omfattede lertøjsproduktion med klare, ensfarvede glasurer og brugsting udviklet i samarbejde med blandt andre Jens H. Quistgaard. Senere blev produktionen koncentreret om stentøj, hvor former som vaser, kander og skåle blev udført med karakteristiske glasurer, herunder harepelsglasur i flere farvetoner. Palshus-keramikken blev blandt andet distribueret gennem Den Permanente, hvor både Per og Annelise Linnemann-Schmidt spillede en aktiv rolle. Udstillingen belyser produktionen som et væsentligt bidrag til dansk design- og kunsthåndværkshistorie.",
+    cta: "Planlæg dit besøg"
+  },
+  {
+    image: "/udstillinger/kawaii.webp",
+    caption: "Kawaii Nostalgi – fra Japan til Pippi",
+    color: "#69CB7E",
+    date: "Februar 2026 - september 2026",
+    title: "Kawaii Nostalgi – fra Japan til Pippi",
+    lead: "Udstillingen undersøger udviklingen af en visuel børnekultur med afsæt i begrebet “kawaii”, der betegner det nuttede eller bedårende. Fokus er på perioden i første halvdel af det 20. århundrede, hvor billeduniverser for børn udviklede sig på tværs af kulturer.",
+    text: "Med udgangspunkt i japanske børnemagasiner som Akai Tori og Kodomo no kuni vises, hvordan kunstnere, forfattere og komponister skabte visuelle og fortællende universer, der både underholdt og stimulerede børns kreativitet. Udstillingen sætter disse udtryk i relation til en vestlig kontekst, herunder figurer som Pippi Langstrømpe, og undersøger forbindelser mellem æstetik, fortælling og kultur på tværs af geografi og tid.",
+    cta: "Planlæg dit besøg"
+  },
+  {
+    image: "/udstillinger/feminist.webp",
+    caption: "Kirsten Justesen - Danner Sidespor",
+    color: "#E770F1",
+    date: "Januar 2026 - april 2026",
+    title: "Kirsten Justesen – Danner Sidespor",
+    lead: "Udstillingen tager udgangspunkt i Kirsten Justesens arbejde med monumentet over Grevinde Danner, indviet i 2024 i København. I forlængelse af dette arbejde har kunstneren skabt en serie statuetter samlet under titlen Danner Sidespor.",
+    text: "Værkerne viderefører motiver og elementer fra monumentet, herunder figuren og symbolske referencer som sommerfuglen og tekstfragmenter. Serien er udført på Tommerup Keramiske Værksted og markerer en undersøgelse af form, materiale og betydning i et mindre format. Udstillingen præsenterer værkerne samlet for første gang og giver indblik i processen bag deres tilblivelse samt deres relation til det monumentale værk.",
+    cta: "Planlæg dit besøg"
+  },
+    {
+    image: "/udstillinger/veninder.webp",
+    caption: "Veninder, kolleger, kvindelige kunstnere",
+    color: "#DFFF8C",
+    date: "Aktuel",
+    title: "Ophængning fra museets samling",
+    lead: "Denne ophængning tager afsæt i værker af kvindelige kunstnere omkring år 1900 og kombinerer museets egen samling med indlån. Centralt står værker af Elise Konstantin-Hansen, Susette Holten og Sofie Holten.",
+    text: "Ophængningen belyser kvinders rolle i kunsthistorien – både som udøvende kunstnere og som en del af samtidens kunstmiljøer. På trods af deres aktive deltagelse i udstillingslivet er mange af deres værker i eftertiden blevet underrepræsenteret i offentlige samlinger.",
+    cta: "Planlæg dit besøg"
+  }
+];
+---
+
+<Layout>
+    <header class="exhibition-header">
+    <h1>
+      Aktuelle<br>
+      udstillinger
+    </h1>
+
+    <p>
+      Her præsenteres museets aktuelle udstillinger.<br>
+      Få overblik over, hvad der venter.
+    </p>
+  </header>
+  <UdstillingsSlider
+  
+    activeTab="aktuelle"
+    items={exhibitions}
+  />
+</Layout>
+
+<style>
+
+.exhibition-header {
+margin-top: 150px;
+
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+.exhibition-header h1 {
+  max-width: 520px;
+  line-height: 0.95;
+}
+
+.exhibition-header p {
+  margin-top: 10px;
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+</style>

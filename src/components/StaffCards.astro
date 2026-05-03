@@ -1,0 +1,212 @@
+<section class="staff">
+  <div class="staff__top">
+    <h3>PERSONALE</h3>
+
+    <div class="staff__arrows">
+      <button class="staff__arrow staff__arrow--prev" type="button" aria-label="Forrige personale">‹</button>
+      <button class="staff__arrow staff__arrow--next" type="button" aria-label="Næste personale">›</button>
+    </div>
+  </div>
+
+  <div class="staff__slider">
+    <article class="staff-card staff-card--pink">
+      <img src="/personale/teresa.webp" alt="Teresa Nielsen">
+      <div class="staff-card__info">
+        <p>Museumsdirektør</p>
+        <h3>Teresa Nielsen</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--green">
+      <img src="/personale/lotte.webp" alt="Lotte Jakobsen">
+      <div class="staff-card__info">
+        <p>Administration</p>
+        <h3>Lotte Jakobsen</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--orange">
+      <img src="/personale/sofus.webp" alt="Sophus Ejler Jepsen">
+      <div class="staff-card__info">
+        <p>Formidler og billedhugger</p>
+        <h3>Sophus Ejler Jepsen</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--yellow">
+      <img src="/personale/random1.webp" alt="">
+      <div class="staff-card__info">
+        <p>Museumsassistent</p>
+        <h3>Majbrit Hansen
+</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--pink">
+      <img src="/personale/random2.webp" alt="">
+      <div class="staff-card__info">
+        <p>Museumsassistent</p>
+        <h3>Charlotte Kissow Holm</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--green">
+      <img src="/personale/random3.webp" alt="">
+      <div class="staff-card__info">
+        <p>Presse og hjemmeside</p>
+        <h3>Karen Johanne B. Wichmann</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--orange">
+      <img src="/personale/random4.webp" alt="">
+      <div class="staff-card__info">
+        <p>Museumsassistent</p>
+        <h3>Vibeke Sandvej Jørgensen</h3>
+      </div>
+    </article>
+
+    <article class="staff-card staff-card--yellow">
+      <img src="/personale/random5.webp" alt="">
+      <div class="staff-card__info">
+        <p>Konsulentbasis</p>
+        <h3>Marie Strøm Nielsen</h3>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+.staff {
+  margin-top: 110px;
+  width: 100%;
+}
+
+.staff__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.staff h2 {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.staff__arrows {
+  display: flex;
+  gap: 18px;
+}
+
+.staff__arrow {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #1A1A1A;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.staff__arrow:hover {
+  text-decoration: underline;
+}
+
+.staff__slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 4px) / 3);
+  gap: 2px;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+}
+
+.staff__slider::-webkit-scrollbar {
+  display: none;
+}
+
+.staff-card {
+  scroll-snap-align: start;
+  min-width: 0;
+  background: #E0E1E3;
+}
+
+.staff-card img {
+  width: 100%;
+  aspect-ratio: 1 / 0.78;
+  object-fit: cover;
+  display: block;
+}
+
+.staff-card__info {
+  min-height: 138px;
+  padding: 10px 12px 18px;
+}
+
+.staff-card__info p {
+  margin: 0 0 5px;
+  font-size: 10px;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.staff-card__info h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+.staff-card--pink .staff-card__info {
+  background: #E770F1;
+}
+
+.staff-card--green .staff-card__info {
+  background: #DFFF8C;
+}
+
+.staff-card--orange .staff-card__info {
+  background: #FF6443;
+}
+
+.staff-card--yellow .staff-card__info {
+  background: #FFE144;
+}
+
+@media (max-width: 900px) {
+  .staff__slider {
+    grid-auto-columns: 82%;
+  }
+
+  .staff-card__info {
+    min-height: 110px;
+  }
+}
+</style>
+
+<script>
+const staffSlider = document.querySelector(".staff__slider");
+const staffPrev = document.querySelector(".staff__arrow--prev");
+const staffNext = document.querySelector(".staff__arrow--next");
+
+function scrollStaff(direction) {
+  const card = staffSlider.querySelector(".staff-card");
+  const gap = 2;
+  const amount = card.offsetWidth + gap;
+
+  staffSlider.scrollBy({
+    left: direction * amount,
+    behavior: "smooth"
+  });
+}
+
+staffPrev.addEventListener("click", () => scrollStaff(-1));
+staffNext.addEventListener("click", () => scrollStaff(1));
+</script>

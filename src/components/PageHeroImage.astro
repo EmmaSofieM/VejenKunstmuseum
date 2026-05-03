@@ -1,0 +1,34 @@
+---
+const { image, alt = "", caption = "", color = "#FFE144" } = Astro.props;
+---
+
+<figure class="page-hero-image" style={`--caption-color: ${color}`}>
+  <img src={image} alt={alt}>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+.page-hero-image {
+  margin: 0;
+}
+
+.page-hero-image img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  display: block;
+}
+
+.page-hero-image figcaption {
+  background: var(--caption-color);
+  padding: 8px 10px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .page-hero-image img {
+    height: 42vh;
+  }
+}
+</style>

@@ -1,0 +1,308 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Layout>
+  <main class="school-page">
+
+    <section class="school-hero">
+      <div class="school-hero__inner">
+        <h1>Billedskolen</h1>
+        <img src="/andet/billedkunstbrøn.webp" alt="Billedskolen">
+      </div>
+    </section>
+
+    <Breadcrumbs
+      items={[
+        { label: "Åbningstider", href: "/besoeg/aabningstider" },
+        { label: "Find vej og parkering", href: "/besoeg/findvej" },
+        { label: "Praktisk info og hjælp", href: "/besoeg/praktiskinfo" },
+        { label: "Billedskolen", href: "/besoeg/billedskolen", active: true },
+        { label: "Grupper og firmaer", href: "/besoeg/grupperogfirmaer" }
+      ]}
+    />
+
+    <section class="school-intro">
+      <div></div>
+
+      <h2>
+        Undervisningen foregår i billedskolens lokaler på Nørregade 21, 1. sal samt i Troldværket på Lindegade 10.<br>
+        Forårssæsonen begynder i uge 5 og består af 10 undervisningsgange.<br>
+        Efterårssæsonen begynder i uge 35 og består ligeledes af 10 undervisningsgange.<br>
+        Holdene har plads til op til 20 elever.
+      </h2>
+    </section>
+
+    <section class="school-section">
+      <h3>Tilmelding</h3>
+
+      <div class="school-table">
+        <div>
+          <strong>Tidspunkt</strong>
+          <p>
+            Tirsdag 16.00 - 18.30<br>
+            Onsdag 16.00 - 18.30<br>
+            Onsdag 19.00 - 21.30<br>
+            Torsdag 16.00 - 18.30<br>
+            Torsdag 19.00 - 21.30<br>
+            Fredag 16.00 - 18.30<br>
+            Lørdag 10.00 - 12.00
+          </p>
+        </div>
+
+        <div>
+          <strong>Hold</strong>
+          <p>
+            Tegnehold<br>
+            Keramik<br>
+            Keramik<br>
+            Tegnehold<br>
+            Tegnehold<br>
+            Maleri, Grafik og Skulptur<br>
+            Tegne Og Male Klippe Klistre
+          </p>
+        </div>
+
+        <div>
+          <strong>Alder</strong>
+          <p>
+            8 - 14 År<br>
+            10 - 15 År<br>
+            10 - 15 År<br>
+            8 - 14 År<br>
+            Fra 10 År<br>
+            7 - 12 År<br>
+            4 - 8 År
+          </p>
+        </div>
+
+        <div>
+          <strong>Lærer</strong>
+          <p>
+            Jette Lowen<br>
+            Dorte<br>
+            Dorte<br>
+            Jette Lowen<br>
+            Jette Lowen<br>
+            Beata Fabricius<br>
+            Beata Fabricius
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="school-images">
+      <img src="/andet/billedkunsttegning.webp" alt="Tegninger fra billedskolen">
+      <img src="/andet/billedkunst-ude.webp" alt="Børn ved kuppel i billedskolen">
+    </section>
+
+    <section class="school-section school-section--links">
+      <h3>Se mere her</h3>
+
+      <div class="school-links">
+        <a href="/besoeg/findvej">Find vej og parkering <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/praktiskinfo">Praktisk info og hjælp <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/aabningstider">Åbningstider <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/grupperogfirmaer">Grupper og firmaer <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+.school-page {
+  color: #1A1A1A;
+  padding-bottom: 120px;
+}
+
+.school-hero {
+  background: #E770F1;
+  margin-bottom: 18px;
+}
+
+.school-hero__inner {
+  height: 270px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 455px minmax(40px, 1fr);
+  align-items: end;
+}
+
+.school-hero h1 {
+  margin-left: 40px;
+  line-height: 0.9;
+  font-weight: bold;
+}
+
+.school-hero img {
+  margin-left: 350px;
+  width: 455px;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.school-page :global(.breadcrumbs) {
+  margin-left: 40px;
+  margin-bottom: 70px;
+}
+
+.school-intro {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 120px;
+}
+
+.school-intro h2 {
+  max-width: 760px;
+  margin: 0;
+  line-height: 1.08;
+  font-weight: 400;
+}
+
+.school-section {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 70px;
+}
+
+.school-section h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.school-table {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 0.8fr 1fr;
+  gap: 48px;
+  max-width: 860px;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.school-table strong {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.school-table p {
+  margin: 0;
+}
+
+.school-images {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 120px;
+  align-items: start;
+}
+
+.school-images img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.school-images img:first-child {
+  height: 270px;
+}
+
+.school-images img:last-child {
+  height: 455px;
+}
+
+.school-section--links {
+  margin-bottom: 0;
+}
+
+.school-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.school-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  position: relative;
+}
+
+.school-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.school-links a:hover::after {
+  width: 100%;
+}
+
+.school-links svg {
+  width: 16px;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .school-hero__inner {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .school-hero h1 {
+    margin: 60px 16px 20px;
+  }
+
+  .school-hero img {
+    margin-left: 0;
+    width: 100%;
+    height: 240px;
+  }
+
+  .school-page :global(.breadcrumbs) {
+    margin-left: 16px;
+    margin-bottom: 50px;
+  }
+
+  .school-intro,
+  .school-section,
+  .school-images {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .school-table {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .school-images img:first-child,
+  .school-images img:last-child {
+    height: auto;
+  }
+}
+</style>

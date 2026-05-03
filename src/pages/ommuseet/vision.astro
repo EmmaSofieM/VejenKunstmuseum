@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Layout>
+  <main class="vision-page">
+
+    <section class="vision-hero">
+      <h1>Vision for Vejen Kunstmuseum</h1>
+
+      <Breadcrumbs
+        items={[
+          { label: "Om museet", href: "/ommuseet" },
+          { label: "Historie", href: "/ommuseet/historie" },
+          { label: "Samling", href: "/ommuseet/samling" },
+          { label: "Vision", href: "/ommuseet/vision", active: true }
+        ]}
+      />
+
+      <figure class="vision-hero__image">
+        <img src="/andet/ældstesal.webp" alt="De ældste sale på Vejen Kunstmuseum">
+        <figcaption>De ældste sale</figcaption>
+      </figure>
+    </section>
+
+    <section class="vision-intro">
+      <div class="vision-intro__text">
+        <h2 class="vision-lead">
+         Museet arbejder med en tydelig vision om at gøre kunsten mere tilgængelig og relevant for flere. <br>Gennem en insisterende nysgerrighed på historien og et stærkt fokus på formidling udvikles både samling og udstillinger løbende. <br>Under ledelse af museumsdirektør Teresa Nielsen er museet vokset markant 
+- både fysisk og indholdsmæssigt med en udvidet samling og flere besøgende.
+        </h2>
+
+        <p>
+         Arbejdet tager afsæt i en dyb forståelse for Niels Hansen Jacobsen og hans samtid, men rækker samtidig ud over det historiske og ind i en nutidig kontekst. Målet er at skabe et museum, hvor både nye og erfarne besøgende kan møde kunsten på egne præmisser, og hvor der er plads til både oplevelse og fordybelse. Samtidig er der et stærkt fokus på at synliggøre den værdi og historie, som allerede findes – både lokalt i Vejen og i en større kunsthistorisk sammenhæng.
+        </p>
+      </div>
+
+      <img class="vision-side-image" src="/andet/vingeskulptur.webp" alt="Skulptur og planter i museets rum">
+    </section>
+
+    <section class="vision-quote">
+      <div class="vision-quote__meta">
+        <span> <strong>Udtalelse af</strong></span>
+        <strong>Museumsdirektør<br>Teresa Nielsen</strong>
+      </div>
+
+      <blockquote>
+        Vi har faktisk noget at være stolte af. Det handler om at få øje på det, der allerede er her historien, kunsten og de mennesker, der har været med til at skabe det. Hvis man forstår det, åbner der sig noget langt større.
+      </blockquote>
+    </section>
+
+    <section class="vision-bottom">
+      <div class="vision-bottom__text">
+        <p> <br> <br> <br>
+          Et centralt fokus er at gøre museet mere tilgængeligt uden at gå på kompromis med dets faglige tyngde. <br>
+Det betyder, at komplekst indhold skal kunne formidles klart og forståeligt, samtidig med at der fortsat er adgang til den dybde og viden, som er afgørende for museets troværdighed. <br>
+Der arbejdes med en tydelig visuel identitet og en mere intuitiv struktur, som gør det lettere at orientere sig og forstå museets indhold. <br>
+Målet er at skabe en oplevelse, der er både inspirerende og informativ – og som inviterer flere ind i mødet med kunsten.
+        </p>
+
+        <p>
+    Vejen Kunstmuseum er i konstant udvikling. <br> Gennem udvidelser, nye udstillinger og et voksende publikum har museet bevæget sig langt fra sit udgangspunkt - uden at miste forbindelsen til det, det er bygget på. <br>
+Arbejdet tager afsæt i en vedvarende nysgerrighed på kunsten og dens betydning, både historisk og i dag.
+        </p>
+      </div>
+
+      <img class="vision-side-image vision-side-image--bottom" src="/andet/trolden.webp" alt="Trolden foran Vejen Kunstmuseum">
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+.vision-page {
+  margin: 0 40px 120px;
+  color: #1A1A1A;
+  font-family: var(--font-body);
+}
+
+.vision-hero h1 {
+  margin: 150px 0 40px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 0.95;
+  font-weight: 700;
+}
+
+.vision-hero :global(.breadcrumbs) {
+  margin-left: 0;
+  margin-bottom: 8px;
+}
+
+.vision-hero__image {
+  margin: 0;
+}
+
+.vision-hero__image img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  display: block;
+}
+
+.vision-hero__image figcaption {
+  background: #FFE144;
+  padding: 8px 10px;
+  font-size: 20px;
+  font-weight: light;
+  line-height: 1;
+}
+
+.vision-intro,
+.vision-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 80px;
+  margin-top: 42px;
+  align-items: start;
+}
+
+.vision-intro__text,
+.vision-bottom__text {
+  max-width: 800px;
+}
+
+.vision-lead {
+  max-width: 850px;
+  margin: 0 0 42px;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.vision-page p {
+  margin: 0 0 26px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.vision-side-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.vision-quote {
+  display: grid;
+  grid-template-columns: 600px minmax(0, 720px);
+  gap: 90px;
+  margin: 120px 0 120px;
+  align-items: end;
+}
+
+.vision-quote__meta {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 150px;
+  align-items: end;
+  font-size: 14px;
+  line-height: 1.15;
+  transform: translateY(-18px);
+}
+
+.vision-quote__meta span,
+.vision-quote__meta strong {
+  font-size: 14px;
+  line-height: 1.15;
+  
+}
+
+.vision-quote blockquote {
+  margin: 0;
+  max-width: 680px;
+  font-size: clamp(30px, 3.1vw, 30px);
+  line-height: 1.22;
+  font-weight: 700;
+}
+
+.vision-quote blockquote::before {
+  content: "“";
+  display: block;
+  font-size: 30px;
+  line-height: 0.7;
+  margin-bottom: 18px;
+}
+.vision-side-image--bottom {
+  align-self: end;
+  margin-top: 60px;
+}
+.vision-side-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+@media (max-width: 900px) {
+  .vision-page {
+    margin: 0 16px 80px;
+  }
+
+  .vision-hero h1 {
+    margin-top: 56px;
+  }
+
+  .vision-hero__image img {
+    height: 42vh;
+  }
+
+  .vision-intro,
+  .vision-bottom,
+  .vision-quote {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .vision-quote {
+    margin: 60px 0;
+  }
+
+  .vision-quote__meta {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+</style>
