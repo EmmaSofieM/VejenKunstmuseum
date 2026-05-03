@@ -1,0 +1,327 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Layout>
+  <main class="groups-page">
+
+    <section class="groups-hero">
+      <div class="groups-hero__inner">
+        <h1>Grupper og firmaer</h1>
+        <img src="/andet/skulptursalen.webp" alt="Skulptur på Vejen Kunstmuseum">
+      </div>
+    </section>
+
+    <Breadcrumbs
+      items={[
+        { label: "Åbningstider", href: "/besoeg/aabningstider" },
+        { label: "Find vej og parkering", href: "/besoeg/findvej" },
+        { label: "Praktisk info og hjælp", href: "/besoeg/praktiskinfo" },
+        { label: "Billedskolen", href: "/besoeg/billedskolen" },
+        { label: "Grupper og firmaer", href: "/besoeg/grupperogfirmaer", active: true }
+      ]}
+    />
+
+    <section class="groups-intro">
+      <div></div>
+
+      <h2>
+        Planlæg et fælles besøg med fokus på kunst, oplevelse og fordybelse.<br>
+        Museet tilbyder omvisninger og introduktioner tilpasset både grupper og virksomheder.
+        Her er der mulighed for at få indsigt i udstillingerne gennem en fælles oplevelse med faglig formidling.
+      </h2>
+    </section>
+
+    <section class="groups-section">
+      <h3>Gruppebesøg</h3>
+
+      <img src="/andet/legehus.webp" alt="Indgang til museet">
+
+      <div class="groups-text">
+        <p>
+          <strong>Større grupper?</strong><br>
+          Er I en gruppe på mere end 20 personer, anbefaler det at kontakte museet inden besøget.
+          Så er det muligt at planlægge ankomsttidspunkt og sikre den bedst mulige oplevelse.
+        </p>
+
+        <p>
+          <strong>Egen guide?</strong><br>
+          Besøg med ekstern guide skal altid aftales på forhånd.
+          Det er som udgangspunkt muligt på hverdage, mens det i weekender ikke er muligt at benytte egen guide.
+        </p>
+
+       <p>
+  Kontakt museet på
+  <a href="mailto:museum@vejen.dk">museum@vejen.dk</a>
+</p>
+      </div>
+    </section>
+
+    <section class="groups-section">
+      <h3>Book en omvisning</h3>
+
+      <img src="/andet/lokale.webp" alt="Udstilling på museet">
+
+      <div class="groups-text">
+        <p>
+          Få en introduktion til museet gennem en fælles omvisning.
+          Omvisninger giver indblik i udstillingerne og kan tilpasses gruppens størrelse og behov.
+        </p>
+
+        <p>
+          En omvisning varer ca. 1 time og bygger med udgangspunkt i museets kunstværker.
+          Kortere introduktioner er også mulige.
+        </p>
+
+        <p>
+          Omvisninger skal bookes på forhånd.
+        </p>
+
+        <p>
+          Kontakt museet på<br>
+          museum@vejen.dk
+        </p>
+      </div>
+    </section>
+
+    <section class="groups-section">
+      <h3>Museumsbutik</h3>
+
+      <img src="/andet/keramikvindue.webp" alt="Museumsbutikken">
+
+      <div class="groups-text">
+        <p>
+          I museumsbutikken findes et udvalg af udstillingskataloger, bøger, plakater og øvrige produkter med tilknytning til museet.
+        </p>
+
+        <p>
+          Kategorier<br>
+          Udstillingskataloger<br>
+          Bøger<br>
+          Plakater<br>
+          Diverse
+        </p>
+
+        <p>
+          Bestilling sker via telefon på 79 96 69 40 eller ved henvendelse på e-mail:
+          museum@vejen.dk
+        </p>
+
+        <p>
+          Ved bestilling via e-mail bedes katalognummer oplyses.
+        </p>
+
+        <p>
+          Der pålægges et gebyr på 25 kr. samt porto ud over varens pris.
+        </p>
+      </div>
+    </section>
+
+    <section class="groups-section groups-section--links">
+      <h3>Se mere her</h3>
+
+      <div class="groups-links">
+        <a href="/besoeg/findvej">Find vej og parkering <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/praktiskinfo">Praktisk info og hjælp <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/billedskolen">Billedskolen <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/aabningstider">Åbningstider <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+.groups-page {
+  color: #1A1A1A;
+  padding-bottom: 120px;
+}
+
+.groups-hero {
+  background: #DFFF8C;
+  margin-bottom: 18px;
+}
+
+.groups-hero__inner {
+  height: 270px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 455px minmax(40px, 1fr);
+  align-items: end;
+}
+
+.groups-hero h1 {
+  margin-left: 40px;
+  line-height: 0.9;
+  font-weight: bold;
+}
+
+.groups-hero img {
+  margin-left: 350px;
+  width: 455px;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.groups-page :global(.breadcrumbs) {
+  margin-left: 40px;
+  margin-bottom: 70px;
+}
+
+.groups-intro {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 100px;
+}
+
+.groups-intro h2 {
+  max-width: 760px;
+  margin: 0;
+  line-height: 1.08;
+  font-weight: 400;
+}
+
+.groups-section {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 20px 80px;
+  margin: 0 40px 100px;
+}
+
+/* placering */
+.groups-section h3 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.groups-section img {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.groups-text {
+    margin-left: 110px;
+  grid-column: 2;
+  grid-row: 2 / span 3;
+}
+
+.groups-section h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.groups-section img {
+  width: 300px;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.groups-text {
+  max-width: 760px;
+}
+
+.groups-text p {
+  margin: 0 0 28px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.groups-text strong {
+  font-weight: bold;
+}
+
+.groups-section--links {
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin-bottom: 0;
+}
+
+.groups-section--links img {
+  display: none;
+}
+
+.groups-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.groups-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  position: relative;
+}
+
+.groups-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.groups-links a:hover::after {
+  width: 100%;
+}
+
+.groups-links svg {
+  width: 16px;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .groups-hero__inner {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .groups-hero h1 {
+    margin: 60px 16px 20px;
+  }
+
+  .groups-hero img {
+    margin-left: 0;
+    width: 100%;
+    height: 240px;
+  }
+
+  .groups-page :global(.breadcrumbs) {
+    margin-left: 16px;
+    margin-bottom: 50px;
+  }
+
+  .groups-intro,
+  .groups-section,
+  .groups-section--links {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .groups-section img {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>

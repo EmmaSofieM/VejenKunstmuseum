@@ -1,0 +1,305 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Layout>
+  <main class="visit-page">
+
+    <section class="visit-hero">
+      <div class="visit-hero__inner">
+        <h1>Find vej og parkering</h1>
+        <img src="/andet/togstation.webp" alt="Vejen Kunstmuseum udefra">
+      </div>
+    </section>
+
+    <Breadcrumbs
+      items={[
+        { label: "Åbningstider", href: "/besoeg/aabningstider" },
+        { label: "Find vej og parkering", href: "/besoeg/findvej", active: true },
+        { label: "Praktisk info og hjælp", href: "/besoeg/praktiskinfo" },
+        { label: "Billedskolen", href: "/besoeg/billedskolen" },
+        { label: "Grupper og firmaer", href: "/besoeg/grupperogfirmaer" }
+      ]}
+    />
+
+    <section class="visit-intro">
+      <div></div>
+
+      <h2>
+        Museet ligger centralt i Vejen og i gåafstand fra Vejen Station,
+        med flere daglige togforbindelser.<br>
+        Der er gratis parkering ved museet.
+      </h2>
+    </section>
+
+    <section class="visit-section">
+      <div>
+        <h3>Hvordan kommer du frem?</h3>
+
+        <p>
+          Vejen Kunstmuseum<br>
+          Østergade 4<br>
+          6600 Vejen
+        </p>
+
+        <a class="visit-cta" href="https://www.google.com/maps/search/?api=1&query=Vejen+Kunstmuseum+Østergade+4+6600+Vejen" target="_blank">
+          Se på Google Maps
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5L16 12L8 19"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="visit-accordion">
+        <details>
+          <summary>
+            Med bil
+            <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>Der er gratis parkering ved museet. Indgang sker fra Østergade.</p>
+        </details>
+
+        <details>
+          <summary>
+            Med tog
+            <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>Museet ligger i gåafstand fra Vejen Station.</p>
+        </details>
+
+        <details>
+          <summary>
+            Med bus
+            <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>Der er busforbindelser til Vejen centrum tæt på museet.</p>
+        </details>
+
+        <details>
+          <summary>
+            Med cykel
+            <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>Der er mulighed for cykelparkering ved museet.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="visit-section visit-section--links">
+      <h3>Se mere her</h3>
+
+      <div class="visit-links">
+        <a href="/besoeg/aabningstider">Åbningstider <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/praktiskinfo">Praktisk info og hjælp <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/billedskolen">Billedskolen <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+        <a href="/besoeg/grupperogfirmaer">Grupper og firmaer <svg viewBox="0 0 24 24"><path d="M8 5L16 12L8 19"></path></svg></a>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+.visit-page {
+  color: #1A1A1A;
+  padding-bottom: 120px;
+}
+
+.visit-hero {
+  background: #FF6443;
+  margin-bottom: 18px;
+}
+
+.visit-hero__inner {
+  height: 270px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 455px minmax(40px, 1fr);
+  align-items: end;
+}
+
+.visit-hero h1 {
+  margin-left: 40px;
+  line-height: 0.9;
+  font-weight: bold;
+}
+
+.visit-hero img {
+  margin-left: 350px;
+  width: 455px;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.visit-page :global(.breadcrumbs) {
+  margin-left: 40px;
+  margin-bottom: 70px;
+}
+
+.visit-intro {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 120px;
+}
+
+.visit-intro h2 {
+  max-width: 680px;
+  margin: 0;
+  line-height: 1.08;
+  font-weight: 400;
+}
+
+.visit-section {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 160px;
+}
+
+.visit-section h3 {
+  margin: 0 0 45px;
+  font-size: 14px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.visit-section p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.visit-accordion {
+  max-width: 860px;
+}
+
+.visit-accordion details {
+  border-top: 1px solid #1A1A1A;
+}
+
+.visit-accordion details:last-child {
+  border-bottom: 1px solid #1A1A1A;
+}
+
+.visit-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.visit-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.visit-accordion summary span {
+  transition: transform 180ms ease;
+}
+
+.visit-accordion summary img {
+  width: 24px;
+  height: auto;
+  display: block;
+}
+
+.visit-accordion details[open] summary span {
+  transform: rotate(90deg);
+}
+
+.visit-accordion p {
+  padding: 0 0 22px;
+  max-width: 520px;
+}
+
+.visit-cta,
+.visit-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  position: relative;
+}
+
+.visit-cta {
+  margin-top: 145px;
+  text-transform: uppercase;
+}
+
+.visit-cta::after,
+.visit-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.visit-cta:hover::after,
+.visit-links a:hover::after {
+  width: 100%;
+}
+
+.visit-cta svg,
+.visit-links svg {
+  width: 16px;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.visit-section--links {
+  margin-bottom: 0;
+}
+
+.visit-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .visit-hero__inner {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .visit-hero h1 {
+    margin: 60px 16px 20px;
+  }
+
+  .visit-hero img {
+    margin-left: 0;
+    width: 100%;
+    height: 240px;
+  }
+
+  .visit-page :global(.breadcrumbs) {
+    margin-left: 16px;
+    margin-bottom: 50px;
+  }
+
+  .visit-intro,
+  .visit-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+</style>

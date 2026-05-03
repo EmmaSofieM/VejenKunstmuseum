@@ -1,0 +1,371 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Layout>
+  <main class="hours-page">
+
+    <section class="hours-hero">
+      <div class="hours-hero__inner">
+        <h1>Åbningstider</h1>
+        <img src="/andet/trolden.webp" alt="Trolden foran Vejen Kunstmuseum">
+      </div>
+    </section>
+
+    <Breadcrumbs
+      items={[
+        { label: "Åbningstider", href: "/besoeg/aabningstider", active: true },
+        { label: "Find vej og parkering", href: "/besoeg/findvej" },
+        { label: "Praktisk info og hjælp", href: "/besoeg/praktiskinfo" },
+        { label: "Billedskolen", href: "/besoeg/billedskolen" },
+        { label: "Grupper og firmaer", href: "/besoeg/grupperogfirmaer" }
+      ]}
+    />
+
+    <section class="hours-section hours-section--opening">
+      <h3>Museets åbningstider</h3>
+
+      <div class="hours-section__content">
+        <p>
+          Tirsdag - fredag 10.00 - 16.00<br>
+          Lørdag og søndag 11.00 - 17.00<br>
+          Mandag lukket
+        </p>
+      </div>
+    </section>
+
+    <section class="hours-section">
+      <h3>Andre åbningstider</h3>
+
+      <div class="hours-accordion">
+        <details>
+          <summary>
+            Helligdage
+        <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>
+            Særlige åbningstider ved helligdage annonceres løbende.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Museumsbutikken
+        <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>
+            Museumsbutikken følger som udgangspunkt museets almindelige åbningstider.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Billedskolen
+            <span class="calendar-event__chevronned"><img src="/ikoner/pil.svg" alt=""></span>
+          </summary>
+          <p>
+            Billedskolen har egne tider afhængigt af hold og undervisningsforløb.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="hours-price-intro">
+      <img src="/andet/trolden.webp" alt="Keramik på museet">
+
+      <div>
+        <h2>
+          Billetter købes ved ankomst til museet.<br>
+          Entrébillett giver adgang til museet, butik og skulpturpark.<br>
+          Der er fri entré for børn og unge under 18 år.<br>
+          Børn under 14 år skal være i følge med en voksen.
+        </h2>
+      </div>
+    </section>
+
+    <section class="hours-section hours-section--prices">
+      <h3>Priser</h3>
+
+      <div class="price-list">
+        <div class="price-row">
+          <span>Voksen 18+</span>
+          <span>50 kr</span>
+        </div>
+
+        <div class="price-row">
+          <span>Studerende</span>
+          <span>30 kr</span>
+        </div>
+
+        <div class="price-row">
+          <span>Børn / unge under 18</span>
+          <span>fri entré</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="hours-section hours-section--links">
+      <h3>Se mere her</h3>
+
+      <div class="hours-links">
+        <a href="/besoeg/findvej">
+          Find vej og parkering
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5L16 12L8 19"></path>
+          </svg>
+        </a>
+
+        <a href="/besoeg/praktiskinfo">
+          Praktisk info og hjælp
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5L16 12L8 19"></path>
+          </svg>
+        </a>
+
+        <a href="/besoeg/billedskolen">
+          Billedskolen
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5L16 12L8 19"></path>
+          </svg>
+        </a>
+
+        <a href="/besoeg/grupperogfirmaer">
+          Grupper og firmaer
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5L16 12L8 19"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+
+img {
+  width: 24px;
+  height: auto;
+  display: block;
+}
+.hours-page {
+  color: #1A1A1A;
+  padding-bottom: 120px;
+}
+
+.hours-hero {
+  background: #DFFF8C;
+  margin-bottom: 18px;
+}
+
+.hours-hero__inner {
+  height: 270px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 455px minmax(40px, 1fr);
+  align-items: end;
+}
+
+.hours-hero h1 {
+    margin-left: 40px;
+  line-height: 0.9;
+  font-weight: bold;
+}
+
+.hours-hero img {
+ margin-left: 350px;
+  width: 455px;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.hours-page :global(.breadcrumbs) {
+  margin-left: 40px;
+  margin-bottom: 90px;
+}
+
+.hours-section {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 120px;
+}
+
+.hours-section h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.hours-section__content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.hours-accordion {
+  max-width: 860px;
+}
+
+.hours-accordion details {
+  border-top: 1px solid #1A1A1A;
+}
+
+.hours-accordion details:last-child {
+  border-bottom: 1px solid #1A1A1A;
+}
+
+.hours-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.hours-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.hours-accordion summary span {
+  font-size: 24px;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.hours-accordion details[open] summary span {
+  transform: rotate(90deg);
+}
+
+.hours-accordion p {
+  margin: 0;
+  padding: 0 0 22px;
+  max-width: 520px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.hours-price-intro {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 190px;
+  margin: 0 40px 70px;
+  align-items: start;
+}
+
+.hours-price-intro img {
+  width: 300px;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.hours-price-intro p {
+  margin: 18px 0 0;
+  max-width: 720px;
+  line-height: 1.08;
+}
+
+.hours-section--prices {
+  margin-bottom: 150px;
+}
+
+.price-list {
+  max-width: 860px;
+  border-top: 1px solid #1A1A1A;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid #1A1A1A;
+}
+
+.hours-section--links {
+  margin-bottom: 0;
+}
+
+.hours-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hours-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  position: relative;
+}
+
+.hours-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.hours-links a:hover::after {
+  width: 100%;
+}
+
+.hours-links svg {
+  width: 16px;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .hours-hero__inner {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .hours-hero h1 {
+    margin: 60px 16px 20px;
+  }
+
+  .hours-hero img {
+    width: 100%;
+    height: 240px;
+  }
+
+  .hours-page :global(.breadcrumbs) {
+    margin-left: 16px;
+    margin-bottom: 50px;
+  }
+
+  .hours-section,
+  .hours-price-intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .hours-price-intro img {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>

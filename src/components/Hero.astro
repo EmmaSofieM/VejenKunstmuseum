@@ -42,6 +42,26 @@
 </section>
 
 <style>
+
+  .hero .hero__indicators button.hero__indicator {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 45px;
+  height: 11px;
+  min-width: 45px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-color: var(--hero-color);
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+.hero .hero__indicators button.hero__indicator.is-active {
+  opacity: 1;
+}
     .hero__right {
   display: flex;
   flex-direction: column;
@@ -159,54 +179,45 @@
 }
 
 /* INDIKATORER */
+
+.hero__indicator {
+  appearance: none;
+  -webkit-appearance: none;
+}
 .hero__indicators {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
 
 .hero__indicator {
-  width: 23px;
-  height: 9px;
+  width: 45px;
+  height: 11px;
   padding: 0;
   border: 0;
+  border-radius: 0;
   background: var(--hero-color);
-  opacity: 0.35;
+  opacity: 0.45;
   cursor: pointer;
-  transition: opacity 180ms ease, background-color 180ms ease;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .hero__indicator.is-active {
   opacity: 1;
 }
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
-  .hero__content {
-    left: 16px;
-    right: 16px;
-    bottom: 78px;
-  }
-
-  .hero__logo {
-    width: min(88vw, 620px);
-  }
-
-  .hero__visit {
-    font-size: 13px;
-  }
-
-  .hero__bottom {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-  }
-
   .hero__indicator {
-    width: 18px;
-    height: 7px;
+    width: 32px;
+    height: 8px;
+  }
+
+  .hero__indicators {
+    gap: 7px;
   }
 }
+
+
 </style>
 
 <script>
