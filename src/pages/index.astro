@@ -13,6 +13,16 @@ import UdstillingForside from '../components/UdstillingForside.astro';
 
 
 <Layout>
+
+  <div id="search"></div>
+
+<script type="module">
+  import("/pagefind/pagefind-ui.js").then((module) => {
+    new module.PagefindUI({
+      element: "#search"
+    });
+  });
+</script>
 	<Hero />
 
   <div id="scroll"></div>
