@@ -1,6 +1,6 @@
 <section class="museum-map" aria-label="Interaktivt museumskort">
   <div class="museum-map__image-wrap">
-    <img class="museum-map__image" src="/kort/kort.png" alt="Kort over Vejen Kunstmuseum">
+    <img class="museum-map__image" src="/kort/kort.png" alt="Kort over Vejen Kunstmuseum" loading="lazy">
 
     <button class="map-pin" style="--x:16.5%;--y:39%;" data-id="01">01</button>
     <button class="map-pin" style="--x:40.5%;--y:28%;" data-id="02">02</button>
@@ -27,6 +27,55 @@
 
   <aside class="museum-map__panel" aria-live="polite"></aside>
 </section>
+
+<section class="museum-map-mobile" aria-label="Museumskort mobil">
+  <a class="museum-map-mobile__download" href="/kort/kort.png" download>
+    Download kortet her
+  </a>
+
+  <div class="museum-map-mobile__slider">
+    {[
+      ["21", "EN TROLD, DER VEJER KRISTENKØD", "Niels Hansen Jacobsen", "1896", "/kort/21.webp"],
+      ["01", "PORTRÆT AF EN UNG DIGTER", "Willie Wulff", "1907", "/kort/1.webp"],
+      ["02", "VOR TIDS ANSIGT", "Niels Hansen Jacobsen", "1921", "/kort/2.webp"],
+      ["03", "BJØRN NØRGAARDS LÅGE", "Lågen er støbt på Uldalls Jernstøberi i Vejen", "", "/kort/3.webp"],
+      ["04", "EN KANTET KRUKKE UDEN KANTER", "Den blev i 2004 modelleret og brændt i ét stykke", "", "/kort/4.webp"],
+      ["05", "VØLVEN", "Niels Hansen Jacobsen", "1913", "/kort/5.webp"],
+      ["06", "BØRNENES SKUR", "Billedkunstskolen", "", "/kort/6.webp"],
+      ["07", "DØDEN OG MODEREN", "Niels Hansen Jacobsen", "1892", "/kort/7.webp"],
+      ["08", "UGLERELIEFFET", "Niels Hansen Jacobsen", "1923", "/kort/8.webp"],
+      ["09", "INDGANG", "Vejen Kunstmuseum", "", "/kort/9.webp"],
+      ["10", "DE ÆLDSTE SALE", "Vejen Kunstmuseum", "1924", "/kort/10.webp"],
+      ["11", "MODER JORD", "Stephan Sinding", "1906", "/kort/11.webp"],
+      ["12", "ERIK HEIDES LÅGE", "Uglerne er fremstillet på Skagen Jernstøberi", "", "/kort/12.webp"],
+      ["13", "HVÆLVET UNDER STÆREKASSEN", "Ejnar Nielsen", "1935", "/kort/13.webp"],
+      ["14", "SKYEN", "Niels Hansen Jacobsen", "1918", "/kort/14.webp"],
+      ["15", "SKIBELUNDSALEN", "Vejen Kunstmuseum", "1914", "/kort/15.webp"],
+      ["16", "FRIHEDEN I ÅRHUNDREDS SLUTNING", "Niels Hansen Jacobsen", "1896", "/kort/16.webp"],
+      ["17", "M-HUSET", "Vejen Kunstmuseum", "2019", "/kort/17.webp"],
+      ["18", "NY MELLEM-BYGNING", "Vejen Kunstmuseum", "2019", "/kort/18.webp"],
+      ["19", "DET GAMLE BIBLIOTEK", "Vejen Kunstmuseum", "1940", "/kort/19.webp"],
+      ["20", "ORDSTRØMMEN", "Hans og Birgitte Börjesons", "1999", "/kort/20.webp"]
+    ].map(([id, title, artist, year, image]) => (
+      <article class="map-mobile-card">
+        <div class="map-mobile-card__number">{id}</div>
+        <h3>{title}</h3>
+        <p class="map-mobile-card__meta">{artist}</p>
+        {year && <p class="map-mobile-card__meta">{year}</p>}
+        <img src={image} alt="" loading="lazy">
+        <p class="map-mobile-card__text">
+          Vejen Kunstmuseum blev grundlagt i 1924 for billedhuggeren Niels Hansen Jacobsen.
+        </p>
+
+        <a class="map-cta" href="/besoeg/aabningstider">
+          PLANLÆG DIT BESØG
+          <svg class="map-cta__arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5L16 12L8 19"></path>
+          </svg>
+        </a>
+      </article>
+    ))}
+  </div>
 
 <style>
 .museum-map {
@@ -168,21 +217,111 @@
   flex-shrink: 0;
 }
 
+.museum-map-mobile {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .museum-map {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 24px 18px;
+    display: none;
   }
 
-  .museum-map__panel {
-    min-height: auto;
+  .museum-map-mobile {
+    display: block;
+    padding: 0 20px 0px;
+    color: #1A1A1A;
+    font-family: var(--font-body);
+    overflow: hidden;
   }
 
-  .map-pin {
-    width: 18px;
-    height: 18px;
-    font-size: 9px;
+  .museum-map-mobile__download {
+    display: inline-flex;
+ color: inherit;
+    font-size: 14px;
+    line-height: 1.3;
+    text-decoration: none;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .museum-map-mobile__download::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.2s ease;
+  }
+
+  .museum-map-mobile__download:hover::after {
+    width: 100%;
+  }
+
+  .museum-map-mobile__slider {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 62vw;
+
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .museum-map-mobile__slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .map-mobile-card {
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  .map-mobile-card__number {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: #1A1A1A;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 22px;
+  }
+
+  .map-mobile-card:first-child .map-mobile-card__number {
+    background: #009C4C;
+  }
+
+  .map-mobile-card h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.15;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .map-mobile-card__meta,
+  .map-mobile-card__text {
+    margin: 0 0 6px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .map-mobile-card img {
+    width: 100%;
+    height: 490px;
+    object-fit: cover;
+    display: block;
+    margin: 16px 0 64px;
+  }
+
+  .map-mobile-card .map-cta {
+    margin-top: 50px;
   }
 }
 </style>
@@ -230,7 +369,7 @@ function renderPanel(id) {
       <img class="museum-map__image-panel" src="${item.image}" alt="">
       <p class="museum-map__text">${item.text}</p>
 
-      <a class="map-cta" href="/planlaeg-besoeg">
+      <a class="map-cta" href="besoeg/aabningstider">
         PLANLÆG DIT BESØG
         <svg class="map-cta__arrow" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8 5L16 12L8 19"></path>

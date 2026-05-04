@@ -13,7 +13,19 @@ import UdstillingForside from '../components/UdstillingForside.astro';
 
 
 <Layout>
+
+  <div id="search"></div>
+
+<script type="module">
+  import("/pagefind/pagefind-ui.js").then((module) => {
+    new module.PagefindUI({
+      element: "#search"
+    });
+  });
+</script>
 	<Hero />
+
+  <div id="scroll"></div>
 <!-- udstillinger -->
 <UdstillingForside />
 
@@ -37,14 +49,14 @@ SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidd
     <p>Besøg os ved at bevæge musen hen over kortet.</p>
 	<Kort />
     <h2>Om museet</h2>
-    <a class="map-cta" href="/ommuseet">
+    <a class="map-cta" href="ommuseet/om">
   LÆS MERE
   <svg class="map-cta__arrow" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M8 5L16 12L8 19"></path>
   </svg>
 </a>
 <div class="bottom-hero">
-  <img src="public/andet/mosaikvæg.webp" alt="museum">
+  <img src="public/andet/mosaikvæg.webp" alt="museum" loading="lazy">
 </div>
     
 </Layout>
@@ -173,4 +185,31 @@ margin-right: 40px;
 
   flex-shrink: 0;
 }
+
+    @media (max-width: 900px){
+
+         h2 {
+        font-weight: 500;
+        margin-top: 100px;
+        margin-left: 20px;
+    }
+
+    p {
+        margin-left: 20px;
+        max-width: 500px;
+    }
+
+    .map-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+        margin-left: 20px;
+
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  position: relative;
+}
+    }
 </style>

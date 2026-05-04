@@ -94,7 +94,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
     <section class="school-images">
       <img src="/andet/billedkunsttegning.webp" alt="Tegninger fra billedskolen">
-      <img src="/andet/billedkunst-ude.webp" alt="Børn ved kuppel i billedskolen">
+      <img src="/andet/cykler.png" alt="Børn ved kuppel i billedskolen">
     </section>
 
     <section class="school-section school-section--links">
@@ -267,22 +267,25 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 @media (max-width: 900px) {
   .school-hero__inner {
-    height: auto;
+    height: 270px;
     grid-template-columns: 1fr;
   }
 
   .school-hero h1 {
-    margin: 60px 16px 20px;
+    margin-left: 20px;
+    margin-top: 240px;  }
+
   }
 
   .school-hero img {
-    margin-left: 0;
+     bottom: 270px;
+   position: relative;
     width: 100%;
-    height: 240px;
+    height: 270px;
   }
 
   .school-page :global(.breadcrumbs) {
-    margin-left: 16px;
+    margin-left: 20px;
     margin-bottom: 50px;
   }
 
@@ -291,8 +294,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
   .school-images {
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .school-table {

@@ -13,10 +13,11 @@ import ImageCollage from '../../components/ImageCollage.astro';
 
     <Breadcrumbs
       items={[
-        { label: "Om museet", href: "/ommuseet", active: true },
-        { label: "Historie", href: "/ommuseet/historie" },
+        { label: "Om museet", href: "/ommuseet/om", active: true },
+        { label: "Vision", href: "/ommuseet/vision" },
         { label: "Samling", href: "/ommuseet/samling" },
-        { label: "Vision", href: "/ommuseet/vision" }
+     { label: "Historie", href: "/ommuseet/historie" }
+
       ]}
     />
 
@@ -125,16 +126,18 @@ import ImageCollage from '../../components/ImageCollage.astro';
 
 .about-intro img,
 .about-text-image img {
-  width: 100%;
+  width: 50%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
+  position: relative;
+  left: 220px;
 }
 
 @media (max-width: 900px) {
   .about-page {
-    margin: 0 16px 80px;
-  }
+margin-left: 20px;
+margin-right: 20px;  }
 
   .about-intro,
   .about-text-image {

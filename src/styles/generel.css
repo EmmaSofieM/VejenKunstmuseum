@@ -53,6 +53,19 @@
   --size-4xl: 3rem;
 }
 
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("/fonts/Nimbus-Sans-D-OT-Light_32752.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nimbus Sans";
+  src: url("/fonts/Nimbus-Sans-D-OT-Bold_32747.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
 /* --- RESET & BASE --- */
 *,
 *::before,
@@ -73,11 +86,13 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-bg);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* --- OVERSKRIFTER --- */
 h1,
-h2,
 h3,
 h4,
 h5,
@@ -111,9 +126,41 @@ p {
 a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease,
+    text-decoration 0.3s ease;
+  position: relative;
 }
 
 a:hover {
   text-decoration: underline;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+a:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+@media (max-width: 900px) {
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+    font-family: var(--font-h2);
+  }
+  h3 {
+    font-size: 14px;
+    font-weight: light;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    font-weight: light;
+  }
 }

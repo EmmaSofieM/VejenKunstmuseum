@@ -11,7 +11,7 @@
   </div>
 
   <div class="hero__content">
-    <a class="hero__visit" href="#">
+    <a class="hero__visit" href="besoeg/aabningstider">
       PLANLÆG DIT BESØG
       <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M8 5L16 12L8 19"></path>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="hero__bottom">
-    <a class="hero__scroll" href="#main">
+    <a class="hero__scroll" href="#scroll">
       SCROLL
       <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M8 5L16 12L8 19"></path>
@@ -131,6 +131,12 @@
   font-size: 16px;
   line-height: 1;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero__visit:hover {
+  opacity: 0.8;
+  transform: translateX(4px);
 }
 
 .hero__logo {
@@ -149,6 +155,12 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.hero__visit:hover .arrow,
+.hero__scroll:hover .arrow {
+  transform: translateX(3px);
 }
 
 .hero__scroll .arrow {
@@ -176,6 +188,12 @@
   font-size: 12px;
   line-height: 1;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero__scroll:hover {
+  opacity: 0.8;
+  transform: translateY(4px);
 }
 
 /* INDIKATORER */
