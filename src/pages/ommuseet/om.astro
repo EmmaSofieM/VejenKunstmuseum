@@ -126,18 +126,30 @@ import ImageCollage from '../../components/ImageCollage.astro';
 
 .about-intro img,
 .about-text-image img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+.about-page {
+  margin: 0 20px 120px;
+  color: #1A1A1A;
+  font-family: var(--font-body);
+}
+.about-intro img,
+.about-text-image img {
   width: 50%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
   position: relative;
-  left: 220px;
+  left: 240px;
 }
-
-@media (max-width: 900px) {
-  .about-page {
-margin-left: 20px;
-margin-right: 20px;  }
+   .about-page h1 {
+    margin: 120px 0 20px;
+  }
 
   .about-intro,
   .about-text-image {
