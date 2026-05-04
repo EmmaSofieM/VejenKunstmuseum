@@ -1,52 +1,75 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import SamlingCard from '../../components/SamlingCard.astro';
-
-
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SamlingCard from "../../components/SamlingCard.astro";
+import SamlingForside from "../../components/SamlingForside.astro";
 ---
 
 <Layout>
-<h1>Samling</h1>
+  <header>
+    <h1>Samling</h1>
     <p>
       Her præsenteres udvalgte værker fra museets samling i en samlet oversigt. <br>
       Få et overblik over materialer, kunstnere og perioder i samlingen.
     </p>
   </header>
 
-      <Breadcrumbs
-      items={[
-        { label: "Om museet", href: "/ommuseet/om" },
-        { label: "Vision", href: "/ommuseet/vision"  },
-        { label: "Samling", href: "/ommuseet/samling", active: true },
-     { label: "Historie", href: "/ommuseet/historie" }
+  <Breadcrumbs
+    items={[
+      { label: "Om museet", href: "/ommuseet/om" },
+      { label: "Vision", href: "/ommuseet/vision" },
+      { label: "Samling", href: "/ommuseet/samling", active: true },
+      { label: "Historie", href: "/ommuseet/historie" }
+    ]}
+  />
 
-      ]}
-    />
+  <div class="desktop-samling">
+    <SamlingCard />
+  </div>
 
-<SamlingCard />
-
+  <div class="mobile-samling">
+    <SamlingForside />
+  </div>
 </Layout>
 
 <style>
-      h1 {
-        font-family: var(--font-heading);
-        margin-top: 150px;
-        margin-left: 40px;
-    }
-
-        p {
-        margin-left: 40px;
-    }
-@media (max-width: 900px) {
-   h1 {
-        font-family: var(--font-heading);
-        margin-top: 150px;
-        margin-left: 20px;
-    }
-
-        p {
-        margin-left: 20px;
-    }
+h1 {
+  font-family: var(--font-heading);
+  margin-top: 150px;
+  margin-left: 40px;
 }
+
+p {
+  margin-left: 40px;
+}
+
+.mobile-samling {
+  display: none;
+}
+
+.desktop-samling {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  h1 {
+    margin-left: 20px;
+  }
+
+  p {
+    margin-left: 20px;
+  }
+
+  .desktop-samling {
+    display: none;
+  }
+
+  .mobile-samling {
+    display: block;
+    margin-bottom: 100px;
+    
+  }
+  .mobile-samling :global(h2) {
+color: white;  }
+
 </style>

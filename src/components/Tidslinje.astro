@@ -404,50 +404,88 @@
 
 /* MOBILE */
 @media (max-width: 900px) {
+  .wrapper {
+    min-height: auto;
+  }
+
   .nav__wrapper {
-    position: sticky;
-    top: 0;
+    position: relative;
+    top: auto;
     width: 100%;
     height: auto;
-    max-height: 48svh;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.75);
+    max-height: none;
+    padding: 32px 16px 40px;
+    overflow: visible;
+    background: white;
     margin-bottom: 0;
+    display: block;
   }
 
   .nav {
-    margin: 0 0 0 28px;
+    margin: 0 0 0 34px;
   }
 
-  .nav__counter {
-    font-size: 20px;
+  .nav li {
+    margin-bottom: 34px;
   }
 
+  .nav li::after {
+    left: -28px;
+    top: 12px;
+    width: 18px;
+    height: calc(100% + 34px);
+    border-left: 2px solid var(--color-text);
+    border-top: 2px solid var(--color-text);
+    opacity: 1;
+  }
+
+  .nav li.active {
+    padding-left: 0;
+  }
+
+  .nav li.active::after {
+    left: -28px;
+    top: 12px;
+    width: 18px;
+    height: calc(100% + 34px);
+    opacity: 1;
+  }
+
+  .nav a:hover {
+    padding-left: 0;
+  }
+
+  .nav__counter,
   .nav li.active .nav__counter {
     font-size: 30px;
+    line-height: 1;
   }
 
-  .nav__body {
+  .nav__body,
+  .nav li.active .nav__body {
     width: calc(100vw - 80px);
     max-width: calc(100vw - 80px);
-    font-size: 13px;
+    height: auto;
+    max-height: none;
+    margin-top: 10px;
+    opacity: 1;
+    overflow: visible;
+    font-size: 14px;
+    line-height: 1.25;
   }
 
-  .timeline-image img {
-    width: 130px;
-    height: 80px;
+  .section {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding: 0;
   }
 
-  .timeline-image--three img {
-    width: 160px;
-    height: 100px;
-  }
-
-  .timeline-image figcaption {
-    font-size: 10px;
-    max-width: 90px;
+  .timeline-images {
+    display: none;
   }
 }
+
 </style>
 
 <script>
