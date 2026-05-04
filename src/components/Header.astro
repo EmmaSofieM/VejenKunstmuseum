@@ -38,6 +38,13 @@
 
       <div class="nav-item">
         <a href="/kalender">Kalender</a>
+        <div class="dropdown">
+          <div class="dropdown__left">
+            <a href="/kalender" data-title="Kalender" data-color="#FFE144">Kalender</a>
+            <a href="https://www.instagram.com/vejenkunstmuseum/" data-title="Instagram" data-color="#E770F1">Instagram</a>
+          </div>
+          <div class="dropdown__right"><h2>Kalender</h2></div>
+        </div>
       </div>
 
       <div class="nav-item">
@@ -78,23 +85,49 @@
       <button class="mobile-menu-button" type="button" aria-label="Åbn menu">
         <span></span>
         <span></span>
+        <span></span>
+
       </button>
     </div>
   </div>
 
-  <div class="mobile-menu">
-    <nav class="mobile-menu__links">
-      <a href="/besoeg/aabningstider" class="is-active" data-title="Åbningstider" data-color="#D9FF72">Åbningstider</a>
-      <a href="/besoeg/findvej" data-title="Find vej og parkering" data-color="#FF6443">Find vej og parkering</a>
-      <a href="/besoeg/praktiskinfo" data-title="Praktisk info og hjælp" data-color="#FFE144">Praktisk info og hjælp</a>
-      <a href="/besoeg/billedskolen" data-title="Billedskolen" data-color="#E770F1">Billedskolen</a>
-      <a href="/besoeg/grupperogfirmaer" data-title="Grupper og virksomheder" data-color="#D9FF72">Grupper og virksomheder</a>
-    </nav>
+ <div class="mobile-menu">
+  <nav class="mobile-menu__tabs">
+    <button class="is-active" type="button" data-menu="besoeg">Planlæg besøg</button>
+    <button type="button" data-menu="udstillinger">Udstillinger</button>
+    <button type="button" data-menu="kalender">Kalender</button>
+    <button type="button" data-menu="museet">Museet</button>
+  </nav>
 
-    <div class="mobile-menu__preview">
-      <h2>Åbningstider</h2>
-    </div>
+  <nav class="mobile-menu__links is-active" data-menu-panel="besoeg">
+    <a href="/besoeg/aabningstider" class="is-active" data-title="Åbningstider" data-color="#D9FF72">Åbningstider</a>
+    <a href="/besoeg/findvej" data-title="Find vej og parkering" data-color="#FF6443">Find vej og parkering</a>
+    <a href="/besoeg/praktiskinfo" data-title="Praktisk info og hjælp" data-color="#FFE144">Praktisk info og hjælp</a>
+    <a href="/besoeg/billedskolen" data-title="Billedskolen" data-color="#E770F1">Billedskolen</a>
+    <a href="/besoeg/grupperogfirmaer" data-title="Grupper og virksomheder" data-color="#D9FF72">For grupper og virksomheder</a>
+  </nav>
+
+  <nav class="mobile-menu__links" data-menu-panel="udstillinger">
+    <a href="/udstillinger/aktuelle" class="is-active" data-title="Aktuelle udstillinger" data-color="#FF6443">Aktuelle udstillinger</a>
+    <a href="/udstillinger/kommende" data-title="Kommende udstillinger" data-color="#E770F1">Kommende udstillinger</a>
+    <a href="/udstillinger/tidligere" data-title="Tidligere udstillinger" data-color="#FFE144">Tidligere udstillinger</a>
+  </nav>
+
+  <nav class="mobile-menu__links" data-menu-panel="kalender">
+    <a href="/kalender" class="is-active" data-title="Kalender" data-color="#FFE144">Kalender</a>
+  </nav>
+
+  <nav class="mobile-menu__links" data-menu-panel="museet">
+    <a href="/ommuseet/om" class="is-active" data-title="Om Vejen Kunstmuseum" data-color="#E770F1">Om Vejen Kunstmuseum</a>
+    <a href="/ommuseet/vision" data-title="Vision for Vejen Kunstmuseum" data-color="#FFE144">Vision for Vejen Kunstmuseum</a>
+    <a href="/ommuseet/samling" data-title="Samling" data-color="#DFFF8C">Samling</a>
+    <a href="/ommuseet/historie" data-title="Historien" data-color="#69CB7E">Historien</a>
+  </nav>
+
+  <div class="mobile-menu__preview">
+    <h2>Åbningstider</h2>
   </div>
+</div>
 </header>
 
 <script>
@@ -143,8 +176,8 @@ document.querySelectorAll(".dropdown").forEach((dropdown) => {
 });
 
 const mobileButton = document.querySelector(".mobile-menu-button");
-const mobileMenu = document.querySelector(".mobile-menu");
-const mobileLinks = document.querySelectorAll(".mobile-menu__links a");
+const mobileTabs = document.querySelectorAll(".mobile-menu__tabs button");
+const mobilePanels = document.querySelectorAll(".mobile-menu__links");
 const mobilePreview = document.querySelector(".mobile-menu__preview");
 const mobilePreviewTitle = document.querySelector(".mobile-menu__preview h2");
 
@@ -153,13 +186,36 @@ mobileButton.addEventListener("click", () => {
   mobileButton.classList.toggle("is-open");
 });
 
-mobileLinks.forEach((link) => {
+mobileTabs.forEach((tab) => {
+  tab.addEventListener("mouseenter", () => activateMobileTab(tab));
+  tab.addEventListener("focus", () => activateMobileTab(tab));
+  tab.addEventListener("click", () => activateMobileTab(tab));
+});
+
+function activateMobileTab(tab) {
+  const target = tab.dataset.menu;
+
+  mobileTabs.forEach((item) => item.classList.remove("is-active"));
+  tab.classList.add("is-active");
+
+  mobilePanels.forEach((panel) => {
+    panel.classList.toggle("is-active", panel.dataset.menuPanel === target);
+  });
+
+  const activePanel = document.querySelector(`.mobile-menu__links[data-menu-panel="${target}"]`);
+  const firstLink = activePanel.querySelector("a");
+
+  activateMobileLink(firstLink, activePanel);
+}
+
+document.querySelectorAll(".mobile-menu__links a").forEach((link) => {
   link.addEventListener("mouseenter", () => activateMobileLink(link));
   link.addEventListener("focus", () => activateMobileLink(link));
 });
 
-function activateMobileLink(link) {
-  mobileLinks.forEach((item) => item.classList.remove("is-active"));
+function activateMobileLink(link, panel = link.closest(".mobile-menu__links")) {
+  panel.querySelectorAll("a").forEach((item) => item.classList.remove("is-active"));
+
   link.classList.add("is-active");
   mobilePreviewTitle.textContent = link.dataset.title || link.textContent;
   mobilePreview.style.background = link.dataset.color || "#D9FF72";
@@ -422,33 +478,37 @@ body.menu-open {
     stroke-linejoin: round;
   }
 
-  .mobile-menu-button {
-    width: 20px;
-    height: 10px;
-    border: 0;
-    background: transparent;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-  }
+ .mobile-menu-button {
+  width: 24px;
+  height: 16px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
 
-  .mobile-menu-button span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #1a1a1a;
-    transition: transform 180ms ease;
-  }
+.mobile-menu-button span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
 
-  .mobile-menu-button.is-open span:first-child {
-    transform: translateY(4px) rotate(45deg);
-  }
+.mobile-menu-button.is-open span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
 
-  .mobile-menu-button.is-open span:last-child {
-    transform: translateY(-4px) rotate(-45deg);
-  }
+.mobile-menu-button.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-button.is-open span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
   .mobile-menu {
     position: fixed;
@@ -471,6 +531,8 @@ body.menu-open {
     visibility: visible;
     pointer-events: auto;
   }
+
+  
 
   .mobile-menu__links {
     display: flex;
@@ -522,5 +584,47 @@ body.menu-open {
     font-weight: 400;
     letter-spacing: -0.8px;
   }
+  .mobile-menu__tabs {
+  display: flex;
+  gap: 34px;
+  padding: 22px 20px 0;
+  border-bottom: 1px solid #dddddd7e;
+}
+
+.mobile-menu__tabs button {
+  position: relative;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.mobile-menu__tabs button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+}
+
+.mobile-menu__tabs button:hover::after,
+.mobile-menu__tabs button.is-active::after {
+  width: 100%;
+}
+
+.mobile-menu__links {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 42px 20px 0;
+}
+
+.mobile-menu__links.is-active {
+  display: flex;
+}
 }
 </style>
