@@ -511,8 +511,10 @@ sections.forEach(section => observer.observe(section));
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
+
+    window.lenis.scrollTo(link.getAttribute('href'), {
+      offset: 0,
+      duration: 1.2
     });
   });
 });
