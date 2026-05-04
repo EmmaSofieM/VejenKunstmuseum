@@ -75,8 +75,7 @@
         </svg>
       </button>
 
-      <button class="mobile-icon" aria-label="Søg">
-        <svg viewBox="0 0 24 24">
+<button class="mobile-icon nav-search" aria-label="Søg">        <svg viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="7"></circle>
           <path d="M16.5 16.5L21 21"></path>
         </svg>
@@ -128,6 +127,23 @@
 
   <div class="mobile-menu__preview">
     <h2>Åbningstider</h2>
+  </div>
+</div>
+
+<div class="search-panel" aria-hidden="true">
+  <button class="search-close" aria-label="Luk søg">
+  <span></span>
+  <span></span>
+</button>
+  <div class="search-panel__inner">
+    <input
+      id="site-search"
+      type="search"
+      placeholder="Søg på siden..."
+      autocomplete="off"
+    />
+
+    <div class="search-results" id="search-results"></div>
   </div>
 </div>
 </header>
@@ -222,9 +238,198 @@ function activateMobileLink(link, panel = link.closest(".mobile-menu__links")) {
   mobilePreviewTitle.textContent = link.dataset.title || link.textContent;
   mobilePreview.style.background = link.dataset.color || "#D9FF72";
 }
+
+// SEARCH
+const searchButtons = document.querySelectorAll(".nav-search");
+const searchInput = document.getElementById("site-search");
+const searchResults = document.getElementById("search-results");
+
+let searchData = [];
+
+searchButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    document.body.classList.toggle("search-open");
+
+    if (document.body.classList.contains("search-open")) {
+      document.body.classList.remove("menu-open");
+
+      if (!searchData.length) {
+        const response = await fetch("/search.json");
+        searchData = await response.json();
+      }
+
+      setTimeout(() => searchInput.focus(), 50);
+    }
+  });
+});
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim().toLowerCase();
+
+  if (!query) {
+    searchResults.innerHTML = "";
+    return;
+  }
+
+  const results = searchData.filter((item) => {
+    return (
+      item.title.toLowerCase().includes(query) ||
+      item.text.toLowerCase().includes(query)
+    );
+  });
+
+  searchResults.innerHTML = results.length
+    ? results
+        .map(
+          (item) => `
+          <a href="${item.url}">
+            ${item.title}
+          </a>
+        `
+        )
+        .join("")
+    : `<p>Ingen resultater fundet.</p>`;
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    document.body.classList.remove("search-open");
+  }
+});
+const searchClose = document.querySelector(".search-close");
+
+searchClose.addEventListener("click", () => {
+  document.body.classList.remove("search-open");
+});
 </script>
 
 <style>
+#site-search::-webkit-search-cancel-button,
+#site-search::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+  .search-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 24px;
+  height: 16px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.search-close span {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a;
+}
+
+.search-close span:first-child {
+  transform: rotate(45deg);
+}
+
+.search-close span:last-child {
+  transform: rotate(-45deg);
+}
+  .search-results a {
+  position: relative;
+}
+
+.search-results a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.search-results a:hover::after {
+  width: 100%;
+}
+  .search-panel {
+  position: fixed;
+  top: 58px;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+body.search-open .search-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.search-panel__inner {
+  padding: 28px 40px 36px;
+}
+
+#site-search {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 0 0 12px;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  outline: none;
+}
+
+.search-results {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.search-results a {
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.search-results a:hover {
+  text-decoration: underline;
+}
+
+.search-results p {
+  margin: 0;
+  font-size: 14px;
+  font-family: var(--font-sans);
+}
+
+@media (max-width: 900px) {
+  .search-panel {
+    top: 64px;
+  }
+
+  .search-panel__inner {
+    padding: 24px 20px 32px;
+  }
+
+  #site-search {
+    font-size: 22px;
+  }
+
+  .search-results a {
+    font-size: 22px;
+  }
+}
 :root {
   --color-text: #111;
   --color-open: #009C4C;
