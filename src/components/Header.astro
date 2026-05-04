@@ -1,6 +1,5 @@
 <header class="header">
   <div class="header__inner">
-
     <div class="header__status">
       <span id="status-text">Åbent</span>
       <span id="status-dot"></span>
@@ -11,7 +10,6 @@
     </a>
 
     <nav class="header__nav">
-
       <div class="nav-item">
         <a href="/besoeg/aabningstider">Planlæg besøg</a>
         <div class="dropdown">
@@ -22,9 +20,7 @@
             <a href="/besoeg/billedskolen" data-title="Billedskolen" data-color="#E770F1">Billedskolen</a>
             <a href="/besoeg/grupperogfirmaer" data-title="Grupper og virksomheder" data-color="#D9FF72">For grupper og virksomheder</a>
           </div>
-          <div class="dropdown__right">
-            <h2>Åbningstider</h2>
-          </div>
+          <div class="dropdown__right"><h2>Åbningstider</h2></div>
         </div>
       </div>
 
@@ -36,23 +32,12 @@
             <a href="/udstillinger/kommende" data-title="Kommende udstillinger" data-color="#E770F1">Kommende udstillinger</a>
             <a href="/udstillinger/tidligere" data-title="Tidligere udstillinger" data-color="#FFE144">Tidligere udstillinger</a>
           </div>
-          <div class="dropdown__right">
-            <h2>Aktuelle udstillinger</h2>
-          </div>
+          <div class="dropdown__right"><h2>Aktuelle udstillinger</h2></div>
         </div>
       </div>
 
       <div class="nav-item">
         <a href="/kalender">Kalender</a>
-        <div class="dropdown">
-          <div class="dropdown__left">
-            <a href="/kalender" data-title="Kalender" data-color="#E0E1E3">Kalender</a>
-            <a href="https://www.instagram.com/vejenkunstmuseum" target="_blank" rel="noopener" data-title="Besøg vores instagram" data-color="#E0E1E3">Besøg vores instagram</a>
-          </div>
-          <div class="dropdown__right">
-            <h2>Arrangementer</h2>
-          </div>
-        </div>
       </div>
 
       <div class="nav-item">
@@ -64,9 +49,7 @@
             <a href="/ommuseet/samling" data-title="Samling" data-color="#DFFF8C">Samling</a>
             <a href="/ommuseet/historie" data-title="Historien" data-color="#69CB7E">Historien</a>
           </div>
-          <div class="dropdown__right">
-            <h2>Om museet</h2>
-          </div>
+          <div class="dropdown__right"><h2>Om museet</h2></div>
         </div>
       </div>
 
@@ -76,56 +59,111 @@
           <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2"/>
         </svg>
       </button>
-
     </nav>
+
+    <div class="header__mobile-actions">
+<button class="mobile-icon" aria-label="Åbningstider" onclick="window.location.href='/besoeg/aabningstider'">        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7V12L16 15"></path>
+        </svg>
+      </button>
+
+      <button class="mobile-icon" aria-label="Søg">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M16.5 16.5L21 21"></path>
+        </svg>
+      </button>
+
+      <button class="mobile-menu-button" type="button" aria-label="Åbn menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu">
+    <nav class="mobile-menu__links">
+      <a href="/besoeg/aabningstider" class="is-active" data-title="Åbningstider" data-color="#D9FF72">Åbningstider</a>
+      <a href="/besoeg/findvej" data-title="Find vej og parkering" data-color="#FF6443">Find vej og parkering</a>
+      <a href="/besoeg/praktiskinfo" data-title="Praktisk info og hjælp" data-color="#FFE144">Praktisk info og hjælp</a>
+      <a href="/besoeg/billedskolen" data-title="Billedskolen" data-color="#E770F1">Billedskolen</a>
+      <a href="/besoeg/grupperogfirmaer" data-title="Grupper og virksomheder" data-color="#D9FF72">Grupper og virksomheder</a>
+    </nav>
+
+    <div class="mobile-menu__preview">
+      <h2>Åbningstider</h2>
+    </div>
   </div>
 </header>
 
 <script>
-  const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours();
+const now = new Date();
+const day = now.getDay();
+const hour = now.getHours();
 
-  const text = document.getElementById("status-text");
-  const dot = document.getElementById("status-dot");
+const text = document.getElementById("status-text");
+const dot = document.getElementById("status-dot");
 
-  let isOpen = false;
+let isOpen = false;
 
-  if (day === 1) {
-    isOpen = false;
-  } else if (day >= 2 && day <= 5) {
-    isOpen = hour >= 10 && hour < 16;
-  } else {
-    isOpen = hour >= 11 && hour < 17;
-  }
+if (day === 1) {
+  isOpen = false;
+} else if (day >= 2 && day <= 5) {
+  isOpen = hour >= 10 && hour < 16;
+} else {
+  isOpen = hour >= 11 && hour < 17;
+}
 
-  text.textContent = isOpen ? "Åbent" : "Lukket";
-  dot.style.background = isOpen ? "#009C4C" : "#F73E36";
+text.textContent = isOpen ? "Åbent" : "Lukket";
+dot.style.background = isOpen ? "#009C4C" : "#F73E36";
 
-  document.querySelectorAll(".dropdown").forEach((dropdown) => {
-    const links = dropdown.querySelectorAll(".dropdown__left a");
-    const box = dropdown.querySelector(".dropdown__right");
-    const title = dropdown.querySelector(".dropdown__right h2");
+document.querySelectorAll(".dropdown").forEach((dropdown) => {
+  const links = dropdown.querySelectorAll(".dropdown__left a");
+  const box = dropdown.querySelector(".dropdown__right");
+  const title = dropdown.querySelector(".dropdown__right h2");
 
-    links.forEach((link, index) => {
-      if (index === 0) {
-        link.classList.add("is-active");
-        box.style.setProperty("--dropdown-color", link.dataset.color);
-        title.textContent = link.dataset.title || link.textContent;
-      }
+  links.forEach((link, index) => {
+    if (index === 0) {
+      link.classList.add("is-active");
+      box.style.setProperty("--dropdown-color", link.dataset.color);
+      title.textContent = link.dataset.title || link.textContent;
+    }
 
-      const activateLink = () => {
-        links.forEach((item) => item.classList.remove("is-active"));
-        link.classList.add("is-active");
+    const activateLink = () => {
+      links.forEach((item) => item.classList.remove("is-active"));
+      link.classList.add("is-active");
+      title.textContent = link.dataset.title || link.textContent;
+      box.style.setProperty("--dropdown-color", link.dataset.color || "#D9FF72");
+    };
 
-        title.textContent = link.dataset.title || link.textContent;
-        box.style.setProperty("--dropdown-color", link.dataset.color || "#D9FF72");
-      };
-
-      link.addEventListener("mouseenter", activateLink);
-      link.addEventListener("focus", activateLink);
-    });
+    link.addEventListener("mouseenter", activateLink);
+    link.addEventListener("focus", activateLink);
   });
+});
+
+const mobileButton = document.querySelector(".mobile-menu-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+const mobileLinks = document.querySelectorAll(".mobile-menu__links a");
+const mobilePreview = document.querySelector(".mobile-menu__preview");
+const mobilePreviewTitle = document.querySelector(".mobile-menu__preview h2");
+
+mobileButton.addEventListener("click", () => {
+  document.body.classList.toggle("menu-open");
+  mobileButton.classList.toggle("is-open");
+});
+
+mobileLinks.forEach((link) => {
+  link.addEventListener("mouseenter", () => activateMobileLink(link));
+  link.addEventListener("focus", () => activateMobileLink(link));
+});
+
+function activateMobileLink(link) {
+  mobileLinks.forEach((item) => item.classList.remove("is-active"));
+  link.classList.add("is-active");
+  mobilePreviewTitle.textContent = link.dataset.title || link.textContent;
+  mobilePreview.style.background = link.dataset.color || "#D9FF72";
+}
 </script>
 
 <style>
@@ -148,6 +186,10 @@ body {
   color: var(--color-text);
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -155,8 +197,6 @@ body {
   background: white;
   font-family: var(--font-sans);
 }
-svg {
-margin-top: 4px;}
 
 .header__inner {
   position: relative;
@@ -167,7 +207,6 @@ margin-top: 4px;}
   padding: 20px 40px 0 40px;
 }
 
-/* STATUS */
 .header__status {
   display: flex;
   align-items: center;
@@ -183,7 +222,6 @@ margin-top: 4px;}
   background: var(--color-open);
 }
 
-/* LOGO */
 .header__logo {
   position: absolute;
   top: 16px;
@@ -199,7 +237,6 @@ margin-top: 4px;}
   height: auto;
 }
 
-/* NAV */
 .header__nav {
   display: flex;
   align-items: flex-start;
@@ -235,7 +272,6 @@ margin-top: 4px;}
   width: 100%;
 }
 
-/* DROPDOWN */
 .dropdown {
   position: fixed;
   top: 58px;
@@ -310,7 +346,6 @@ margin-top: 4px;}
   letter-spacing: -0.8px;
 }
 
-/* SEARCH */
 .nav-search {
   appearance: none;
   border: 0;
@@ -322,27 +357,168 @@ margin-top: 4px;}
   line-height: 0;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
+.header__mobile-actions,
+.mobile-menu {
+  display: none;
+}
+
+/* MOBIL */
+@media (max-width: 900px) {
   .header__inner {
-    padding-inline: 28px;
-    grid-template-columns: 150px 1fr;
+    height: 64px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 18px 20px 0;
+  }
+
+  .header__status {
+    gap: 0;
+  }
+
+  .header__status span:first-child {
+    display: none;
+  }
+
+  #status-dot {
+    width: 20px;
+    height: 8px;
+    margin-top: 8px;
   }
 
   .header__logo {
-    left: 260px;
+    position: absolute;
+    top: 14px;
+    left: 82px;
+    width: 118px;
   }
 
   .header__nav {
-    gap: 28px;
-  }
-
-  .dropdown {
-    grid-template-columns: 1fr;
-  }
-
-  .dropdown__right {
     display: none;
+  }
+
+  .header__mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .mobile-icon {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  .mobile-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mobile-menu-button {
+    width: 20px;
+    height: 10px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .mobile-menu-button span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #111;
+    transition: transform 180ms ease;
+  }
+
+  .mobile-menu-button.is-open span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .mobile-menu-button.is-open span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100vw;
+    height: calc(100svh - 64px);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 180ms ease, visibility 180ms ease;
+  }
+
+  body.menu-open .mobile-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobile-menu__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 68px 20px 0;
+  }
+
+  .mobile-menu__links a {
+    position: relative;
+    width: fit-content;
+    font-family: var(--font-serif);
+    font-size: 31px;
+    line-height: 1.45;
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: -0.8px;
+  }
+
+  .mobile-menu__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 7px;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .mobile-menu__links a:hover::after,
+  .mobile-menu__links a.is-active::after {
+    width: 100%;
+  }
+
+  .mobile-menu__preview {
+    min-height: 370px;
+    background: #D9FF72;
+    padding: 20px;
+    transition: background 180ms ease;
+  }
+
+  .mobile-menu__preview h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 31px;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -0.8px;
   }
 }
 </style>

@@ -93,7 +93,6 @@ body {
 
 /* --- OVERSKRIFTER --- */
 h1,
-h2,
 h3,
 h4,
 h5,
@@ -143,4 +142,25 @@ a:hover {
 a:active {
   transform: scale(0.98);
   transition: transform 0.1s ease;
+}
+@media (max-width: 900px) {
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+    font-family: var(--font-h2);
+  }
+  h3 {
+    font-size: 14px;
+    font-weight: light;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    font-weight: light;
+  }
 }
