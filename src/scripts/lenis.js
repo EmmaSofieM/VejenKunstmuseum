@@ -1,11 +1,11 @@
 import Lenis from "lenis";
 
 const lenis = new Lenis({
-  lerp: 0.075,
-  wheelMultiplier: 0.9,
+  lerp: 0.2,
+  wheelMultiplier: 1,
   touchMultiplier: 1,
   smoothWheel: true,
-  smoothTouch: false,
+  smoothTouch: true,
 });
 
 function raf(time) {
