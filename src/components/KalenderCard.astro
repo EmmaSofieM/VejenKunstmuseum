@@ -359,8 +359,8 @@ font-size: 14px;
 }
 
 .calendar-event__chevron {
-  justify-self: end;
-  transition: transform 180ms ease;
+   justify-self: end;
+  transition: transform 1050ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .calendar-event__chevronned {
    transform: rotate(90deg);
@@ -371,18 +371,25 @@ font-size: 14px;
 }
 
 .calendar-event__body {
-margin-left: 105px;
+  margin-left: 105px;
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
   gap: 24px;
+
   max-height: 0;
   overflow: hidden;
-  transition: max-height 260ms ease, padding 260ms ease;
+  opacity: 0;
+
+  transition:
+    max-height 450ms ease,
+    padding 450ms ease,
+    opacity 250ms ease;
 }
 
 .calendar-event.is-open .calendar-event__body {
-  max-height: 420px;
+  max-height: 600px;
   padding: 28px 0 54px 180px;
+  opacity: 1;
 }
 
 .calendar-event__body img {
@@ -390,6 +397,10 @@ margin-left: 105px;
   height: 150px;
   object-fit: cover;
   display: block;
+
+  transition:
+    opacity 450ms ease 120ms,
+    transform 4050ms ease 120ms;
 }
 
 .calendar-event__body p {

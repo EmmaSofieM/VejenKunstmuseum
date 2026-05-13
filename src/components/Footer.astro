@@ -6,29 +6,29 @@
     <div class="footer-top">
       <div class="footer-col">
         <div class="footer-title">MUSEET</div>
-        <a href="#">Udstillinger</a>
-        <a href="#">Kalender</a>
-        <a href="#">Besøg</a>
-        <a href="#">Museet</a>
+        <a href="/udstillinger/aktuelle">Udstillinger</a>
+        <a href="/kalender">Kalender</a>
+        <a href="/ommuseet/om">Museet</a>
       </div>
+
       <div class="footer-col">
         <div class="footer-title">PRAKTISK</div>
-        <a href="#">Åbningstider</a>
-        <a href="#">Priser</a>
-        <a href="#">Find vej</a>
+        <a href="/besoeg/aabningstider">Åbningstider</a>
+        <a href="/besoeg/praktiskinfo">Hjælp</a>
+        <a href="/besoeg/findvej">Find vej</a>
       </div>
       <div class="footer-col">
         <div class="footer-title">LEGAL</div>
-        <a href="#">Privatlivspolitik</a>
-        <a href="#">Undervisning</a>
-        <a href="#">Presseomtale</a>
+        <a href="https://www.vejenkunstmuseum.dk/" target="_blank">Privatlivspolitik</a>
+        <a href="/besoeg/billedskolen">Undervisning</a>
+        <a href="https://www.vejenkunstmuseum.dk/" target="_blank">Presseomtale</a>
       </div>
     </div>
     <div class="footer-contact">
       <div class="footer-title">KONTAKT</div>
       <div>Vejens Kunstmuseum</div>
       <div>Museumsdirektør, Teresa Nielsen</div>
-      <div>6600 Vejen <a href="#">Østergade 4</a></div>
+      <div><a href="https://www.google.com/maps/place/Østergade+4,+6600+Vejen,+Danmark" target="_blank">6600 Vejen Østergade 4</a></div>
       <div><a href="mailto:museum@vejen.dk">museum@vejen.dk</a></div>
       <div>For presse <a href="mailto:karwi@vejen.dk">karwi@vejen.dk</a></div>
       <div><a href="tel:+4579966942">+45 79 96 69 42</a></div>
@@ -44,11 +44,11 @@
         <label for="newsletter-email"></label>
         <div class="newsletter-input">
           <input type="email" id="newsletter-email" name="email" placeholder="Email" required />
-          <button type="submit" aria-label="Tilmeld">&rsaquo;</button>
+<button type="submit" aria-label="Tilmeld">›</button>
         </div>
         <div class="newsletter-check">
           <input type="checkbox" id="accept-privacy" required />
-          <label for="accept-privacy">Jeg accepterer <a href="#">privatlivspolitikken</a>.</label>
+          <label for="accept-privacy">Jeg accepterer <a href="/ommuseet/om">privatlivspolitikken</a>.</label>
         </div>
       </form>
     </div>
@@ -60,6 +60,17 @@
 </footer>
 
 <style>
+
+  .newsletter.is-sent .newsletter-input input {
+  opacity: 1;
+  cursor: default;
+}
+
+.newsletter.is-sent .newsletter-input button {
+  opacity: 1;
+  transform: none;
+  cursor: default;
+}
   .newsletter-input input {
   flex: 1;
   border: none;
@@ -375,3 +386,22 @@ padding-top: 20px;}
   }
 }
 </style>
+
+
+<script>
+const newsletterForm = document.querySelector(".newsletter");
+const newsletterInput = document.querySelector("#newsletter-email");
+const newsletterButton = document.querySelector(".newsletter-input button");
+
+newsletterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  newsletterInput.value = "Sendt";
+  newsletterInput.disabled = true;
+
+newsletterButton.innerHTML = "⌝";  newsletterButton.setAttribute("aria-label", "Tilmeldt nyhedsbrev");
+  newsletterButton.disabled = true;
+
+  newsletterForm.classList.add("is-sent");
+});
+</script>

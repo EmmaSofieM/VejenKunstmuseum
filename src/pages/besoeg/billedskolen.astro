@@ -3,8 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 ---
 
-<Layout>
-  <main class="school-page">
+<Layout title="Billedskolen">  <main class="school-page">
 
     <section class="school-hero">
       <div class="school-hero__inner">
@@ -267,19 +266,23 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 @media (max-width: 900px) {
   .school-hero__inner {
-    height: auto;
+    height: 270px;
     grid-template-columns: 1fr;
   }
 
   .school-hero h1 {
     margin-left: 20px;
+     position: relative;
+  top: 240px;
     
   }
+
 
   .school-hero img {
      position: relative;
     width: 100%;
     height: 270px;
+    top: -29px;
   }
 
   .school-page :global(.breadcrumbs) {

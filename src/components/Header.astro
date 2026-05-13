@@ -193,6 +193,21 @@ document.querySelectorAll(".dropdown").forEach((dropdown) => {
   });
 });
 
+document.querySelectorAll(".nav-item").forEach((item) => {
+  let closeTimer;
+
+  item.addEventListener("mouseenter", () => {
+    clearTimeout(closeTimer);
+    item.classList.add("is-dropdown-open");
+  });
+
+  item.addEventListener("mouseleave", () => {
+    closeTimer = setTimeout(() => {
+      item.classList.remove("is-dropdown-open");
+    }, 220);
+  });
+});
+
 const mobileButton = document.querySelector(".mobile-menu-button");
 const mobileTabs = document.querySelectorAll(".mobile-menu__tabs button");
 const mobilePanels = document.querySelectorAll(".mobile-menu__links");
@@ -552,7 +567,8 @@ body.menu-open {
 }
 
 .nav-item:hover .dropdown,
-.nav-item:focus-within .dropdown {
+.nav-item:focus-within .dropdown,
+.nav-item.is-dropdown-open .dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
