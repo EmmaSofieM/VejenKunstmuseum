@@ -2,79 +2,104 @@
 const { items = [] } = Astro.props;
 ---
 
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  {items.map((item, index) =>
-    item.active ? (
-      <span class="crumb is-active" aria-current="page">
-        {item.label}
-      </span>
-    ) : (
-      <a href={item.href} class="crumb">
-        {item.label}
-      </a>
-    )
-  )}
+<nav class="breadcrumbs" aria-label="Brødkrummesti">
+  <ol class="breadcrumbs__list">
+    {items.map((item) => (
+      <li class="breadcrumbs__item">
+        {item.active ? (
+          <span class="breadcrumbs__current" aria-current="page">
+            {item.label}
+          </span>
+        ) : (
+          <a href={item.href} class="breadcrumbs__link">
+            {item.label}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
 </nav>
 
 <style>
 .breadcrumbs {
+  margin: 0 40px 40px;
+  font-family: var(--font-body);
+}
+
+.breadcrumbs__list {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-left: 40px;
-  margin-bottom: 40px;
-
-  font-size: 12px;
-  text-transform: uppercase;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
   overflow-x: auto;
   white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-.breadcrumbs::-webkit-scrollbar {
+.breadcrumbs__list::-webkit-scrollbar {
   display: none;
 }
 
-.crumb {
-  color: #1A1A1A;
-  text-decoration: none;
-  font-weight: 400;
-  position: relative;
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
   flex: 0 0 auto;
-  transition: opacity 0.15s ease;
+  color: #1a1a1a;
 }
 
-.crumb:not(:last-child)::after {
-  content: "›";
-  margin-left: 6px;
-  opacity: 0.45;
+.breadcrumbs__item:not(:last-child)::after {
+  content: "/";
+  margin: 0 10px;
+  font-size: 12px;
+  color: #1a1a1a;
+  opacity: 0.4;
 }
 
-.crumb:hover {
-  opacity: 0.6;
+.breadcrumbs__link,
+.breadcrumbs__current {
+  font-size: 13px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.crumb.is-active {
+.breadcrumbs__link {
+  color: #1a1a1a;
+  text-decoration: none;
+  opacity: 0.65;
+  transition:
+    opacity 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.breadcrumbs__link:hover,
+.breadcrumbs__link:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.breadcrumbs__current {
+  color: #1a1a1a;
   font-weight: 600;
-}
-
-.crumb.is-active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
+  opacity: 1;
 }
 
 @media (max-width: 600px) {
   .breadcrumbs {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 24px;
+    margin: 0 20px 28px;
+  }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    margin: 0 8px;
+  }
+
+  .breadcrumbs__link,
+  .breadcrumbs__current {
     font-size: 11px;
   }
 }
