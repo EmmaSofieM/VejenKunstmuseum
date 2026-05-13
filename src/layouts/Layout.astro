@@ -20,7 +20,7 @@ const { title = 'Vejen Kunstmuseum' } = Astro.props;
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io (2)/favicon-16x16.png">
 <link rel="manifest" href="/favicon_io (2)/site.webmanifest">
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+<title>{title === "Vejen Kunstmuseum" ? title : `${title} | Vejen Kunstmuseum`}</title>
 	</head>
 	<body>
 		<Header />
