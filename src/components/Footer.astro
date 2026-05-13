@@ -44,7 +44,7 @@
         <label for="newsletter-email"></label>
         <div class="newsletter-input">
           <input type="email" id="newsletter-email" name="email" placeholder="Email" required />
-          <button type="submit" aria-label="Tilmeld">&rsaquo;</button>
+<button type="submit" aria-label="Tilmeld">›</button>
         </div>
         <div class="newsletter-check">
           <input type="checkbox" id="accept-privacy" required />
@@ -60,6 +60,17 @@
 </footer>
 
 <style>
+
+  .newsletter.is-sent .newsletter-input input {
+  opacity: 1;
+  cursor: default;
+}
+
+.newsletter.is-sent .newsletter-input button {
+  opacity: 1;
+  transform: none;
+  cursor: default;
+}
   .newsletter-input input {
   flex: 1;
   border: none;
@@ -375,3 +386,22 @@ padding-top: 20px;}
   }
 }
 </style>
+
+
+<script>
+const newsletterForm = document.querySelector(".newsletter");
+const newsletterInput = document.querySelector("#newsletter-email");
+const newsletterButton = document.querySelector(".newsletter-input button");
+
+newsletterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  newsletterInput.value = "Sendt";
+  newsletterInput.disabled = true;
+
+newsletterButton.innerHTML = "⌝";  newsletterButton.setAttribute("aria-label", "Tilmeldt nyhedsbrev");
+  newsletterButton.disabled = true;
+
+  newsletterForm.classList.add("is-sent");
+});
+</script>
