@@ -1,6 +1,4 @@
 :root {
-  /* === FARVER === */
-
   /* Primære farver */
   --color-primary: #009c4c;
   --color-secondary: #f73e36;
@@ -11,7 +9,7 @@
   --color-bg: white;
   --color-bg-alt: white;
 
-  /* Accentfarver (tilføj så mange du har) */
+  /* Accentfarver */
   --color-accent-1: #ffe144;
   --color-accent-2: #dfff8c;
   --color-accent-3: #69cb7e;
@@ -66,7 +64,7 @@
   font-weight: 700;
   font-style: normal;
 }
-/* --- RESET & BASE --- */
+
 *,
 *::before,
 *::after {
@@ -104,7 +102,6 @@ body {
     color 0.3s ease;
 }
 
-/* --- OVERSKRIFTER --- */
 h1,
 h3,
 h4,
@@ -135,7 +132,6 @@ p {
   font-weight: light;
 }
 
-/* --- LINKS --- */
 a {
   color: var(--color-accent);
   text-decoration: none;

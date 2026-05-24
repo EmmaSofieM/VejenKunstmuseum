@@ -23,7 +23,6 @@ const { href = "#", label = "Læs mere", active = false } = Astro.props;
   position: relative;
 }
 
-/* underline base */
 .map-cta::after {
   content: "";
   position: absolute;
@@ -37,12 +36,10 @@ const { href = "#", label = "Læs mere", active = false } = Astro.props;
   transition: width 0.2s ease;
 }
 
-/* hover */
 .map-cta:hover::after {
   width: 100%;
 }
 
-/* aktiv side (altid streg) */
 .map-cta.is-active::after {
   width: 100%;
 }

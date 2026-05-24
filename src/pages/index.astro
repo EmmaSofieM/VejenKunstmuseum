@@ -5,10 +5,6 @@ import Kort from '../components/Kort.astro';
 import Kalender from '../components/KalenderCard.astro';
 import SamlingForside from '../components/SamlingForside.astro';
 import UdstillingForside from '../components/UdstillingForside.astro';
-
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 
@@ -26,11 +22,7 @@ import UdstillingForside from '../components/UdstillingForside.astro';
 	<Hero />
 
   <div id="scroll"></div>
-<!-- udstillinger -->
 <UdstillingForside />
-
-<!-- kalender -->
-
 <div class="calendar__intro">
   <h2>Kalender</h2>
 
@@ -41,8 +33,6 @@ SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidd
   </a>
 </div>
 <Kalender frontpage />
-<!-- samling -->
-
 <SamlingForside />
 
     <h2>Besøg museet</h2>
@@ -86,7 +76,6 @@ SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidd
   position: relative;
 }
 
-/* underline */
 .map-cta::after {
   content: "";
   position: absolute;
@@ -100,7 +89,6 @@ SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidd
   transition: width 0.2s ease;
 }
 
-/* hover = streg frem */
 .map-cta:hover::after {
   width: 100%;
 }
@@ -121,12 +109,12 @@ SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidd
 
 .bottom-hero {
   width: 100%;
-  margin-top: 20px; /* luft over */
+  margin-top: 20px; 
 }
 
 .bottom-hero img {
   width: 100%;
-  height: 90vh; /* justér højde */
+  height: 90vh; 
   object-fit: cover;
   display: block;
 }
@@ -135,11 +123,8 @@ SE HELE KALENDER    <svg class="cta-inline__arrow" viewBox="0 0 24 24" aria-hidd
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 48px; /* luft ned til listen */
+  margin-bottom: 48px; 
 }
-
-
-/* din eksisterende CTA style genbrugt */
 .cta-inline {
   display: inline-flex;
   align-items: center;
@@ -152,7 +137,6 @@ margin-right: 40px;
   position: relative;
 }
 
-/* underline */
 .cta-inline::after {
   content: "";
   position: absolute;
@@ -166,12 +150,10 @@ margin-right: 40px;
   transition: width 0.2s ease;
 }
 
-/* hover */
 .cta-inline:hover::after {
   width: 100%;
 }
 
-/* PIL — samme som resten af siden */
 .cta-inline__arrow {
   width: 16px;
   height: auto;
